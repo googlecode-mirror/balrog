@@ -8,7 +8,7 @@
 <div id="marco">
 	<div id="cabecera">
 		<h1>Balrog</h1>
-		<h2>A sait for de pipol</h2>
+		<h2>El demonio hecho web</h2>
 	</div>
 	<div id="colizq">
 	    <?php echo $colizq; ?>
@@ -20,7 +20,7 @@
         <?php echo $colder; ?>
 	</div>
 	<div id="pie">
-		<span>Copyleft Soflete Corp.</span>
+		<p>Copyleft Soflete Corp.</p>
 	</div>
 </div>
 </body>
