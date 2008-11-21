@@ -1,4 +1,5 @@
 var empezar = function() {
-	//alert('Hola');
+	alert('Hola');
 }
-$(document).ready(empezar);
+
+$(document).ready(empezar);	

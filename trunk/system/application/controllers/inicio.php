@@ -1,13 +1,18 @@
 <?php
-class Inicio extends Controller {
-    public function __construct(){        
+class Inicio extends MyController
+{
+    public function __construct ()
+    {
         parent::Controller();
     }
-    public function index(){
-        $data = array();
-        $data['colizq'] = $this->load->view('menunav',NULL,TRUE);
-        $data['cuerpo'] = 'Cuerpo...';
-        $data['colder'] = 'Columna Derecha';        
-        $this->load->view('inicio', $data);
+    public function index ()
+    {
+        $this->setPageTitle('Balrog - Inicio');
+        $this->addJS('jquery-1.2.6.pack.js');
+        $this->addCSS('main.css');
+        $this->addJS('inicio.js');
+        $this->addCSS('inicio.css');
+        $this->setContent($this->load->view('inicio', NULL, TRUE));
+        $this->render();
     }
 }
