@@ -25,13 +25,13 @@ class MyController extends Controller
             'src' => base_url().'system/application/css/'.$filename
         );
     }
-    public function setContent ($view)
+    public function setContentView ($view)
     {
-        $this->data['content'] = $view;
+        $this->data['content'] = $this->load->view($view, NULL, TRUE);
     }
-    public function render ()
+    public function render ($layout = 'master')
     {
         $this->load->library('parser');
-        $this->parser->parse('master', $this->data);
+        $this->parser->parse('templates/'.$layout, $this->data);
     }
 }
