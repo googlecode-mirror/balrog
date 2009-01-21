@@ -9,11 +9,12 @@ class FrontController
         $this->controller = $controller ? $controller : 'home'; 
         $this->action = $action ? $action : 'index';
     }
-    public function start ()
+    public function excecute ()
     {
         require_once 'controllers/'.ucfirst($this->controller).'.php';
         $action = $this->action;
         $this->instance = new $this->controller();        
         $this->instance->$action();
+        $this->instance->_finish();        
     }
 }

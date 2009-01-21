@@ -4,4 +4,4 @@ require_once 'lib/FrontController.class.php';
 $controller = Url::get_param('c');
 $action = Url::get_param('a');
 $fc = new FrontController($controller, $action);
-$fc->start();
+$fc->excecute();
