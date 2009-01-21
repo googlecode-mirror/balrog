@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elements>
+    <element>
+        <title>
+            Primer Elemento
+        </title>
+    </element>
+    <element>
+        <title>
+            Segundo Elemento
+        </title>
+    </element>
+    <element id="help3">
+        <title>
+            Tercer Elemento
+        </title>
+    </element>
+</elements>
