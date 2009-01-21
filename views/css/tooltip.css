@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+div#tooltips span{	
+	display: none;
+	color: white;
+	background-color: #333333;
+	padding: 4px;
+	margin : 2px;
+	opacity: 0.85;
+	/* For IE: */
+	filter: alpha(opacity = 85);
+	width: 240px;
+}
+
+a.tooltip {
+	text-decoration: none;
+	cursor:help;	
+}
