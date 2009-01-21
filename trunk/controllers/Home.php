@@ -4,21 +4,21 @@ class Home extends Controller
 {
     public function index ()
     {
-        $this->display('index.html');
+        $this->_setView('index');        
     }
     public function printing(){
-        $this->display('print.html');
+        $this->_setView('print');
     }
     public function tooltips1 ()
     {
-        $this->display('tooltips1.html');
+        $this->_setView('tooltips1');
     }
     public function tooltips2 ()
     {
-        $this->display('tooltips2.html');
+        $this->_setView('tooltips2');
     }
     public function xml ()
     {
-        $this->display('xml.html');
+        $this->_setView('xml');
     }
 }
