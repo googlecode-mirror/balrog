@@ -6,8 +6,9 @@ class View
     {
         $this->name = $name;        
     }
-    public function display ()
+    public function display ($data)
     {
+    	extract($data);
         ob_start();
         include 'views/html/' . $this->name . '.html';
         ob_end_flush();
