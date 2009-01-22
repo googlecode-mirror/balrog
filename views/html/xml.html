@@ -3,12 +3,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Display XML</title>
-        <script type="text/javascript" src="js/jquery-1.3.js">
+        <script type="text/javascript" src="<?php print Url::get_js_url('jquery-1.3.js'); ?>">
         </script>
-        <script type="text/javascript" src="js/xml.jquery.js">
+        <script type="text/javascript" src="<?php print Url::get_js_url('xml.jquery.js'); ?>">
         </script>
+		<link type="text/xml" id="xml" rel="alternate" href="<?php print Url::get_inc_url('data.xml'); ?>" />
     </head>
     <body>
-    	<a id="back" href="<?php print Url::get_url('home', 'index'); ?>">back</a>
+        <a id="back" href="<?php print Url::get_url('home', 'index'); ?>">back</a>
     </body>
 </html>

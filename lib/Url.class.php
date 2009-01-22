@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/Config.class.php';
+require_once 'lib/Config.interface.php';
 class Url implements Config
 {
     public static function get_param ($name)
@@ -21,7 +21,12 @@ class Url implements Config
     {
         return Url::WWWROOT . '/views/css/' . $filename;
     }
-    public static function get_html_url($filename){
+    public static function get_html_url ($filename)
+    {
         return Url::WWWROOT . '/views/html/' . $filename;
+    }
+    public static function get_inc_url ($filename)
+    {
+        return Url::WWWROOT . '/views/inc/' . $filename;
     }
 }

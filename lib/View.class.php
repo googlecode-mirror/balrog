@@ -1,4 +1,5 @@
 <?php
+require_once 'lib/Path.class.php';
 class View
 {
     private $name;
@@ -10,7 +11,7 @@ class View
     {
         extract($data);
         ob_start();
-        include Url::get_html_url($this->name . '.html');
+        include Path::get_html_path($this->name . '.html');
         ob_end_flush();
     }
 }
