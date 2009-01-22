@@ -4,13 +4,13 @@ class View
     private $name;
     public function __construct ($name)
     {
-        $this->name = $name;        
+        $this->name = $name;
     }
     public function display ($data)
     {
-    	extract($data);
+        extract($data);
         ob_start();
-        include 'views/html/' . $this->name . '.html';
+        include Url::get_html_url($this->name . '.html');
         ob_end_flush();
-    }    
+    }
 }

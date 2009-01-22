@@ -13,4 +13,15 @@ class Url implements Config
             'a' => $a
         ));
     }
+    public static function get_js_url ($filename)
+    {
+        return Url::WWWROOT . '/views/js/' . $filename;
+    }
+    public static function get_css_url ($filename)
+    {
+        return Url::WWWROOT . '/views/css/' . $filename;
+    }
+    public static function get_html_url($filename){
+        return Url::WWWROOT . '/views/html/' . $filename;
+    }
 }
