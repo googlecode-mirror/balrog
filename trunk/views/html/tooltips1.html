@@ -3,13 +3,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tootlip examples</title>
-        <script type="text/javascript" src="views/js/jquery-1.3.js">
+        <script type="text/javascript" src="<?php print Url::get_js_url('jquery-1.3.js'); ?>">
         </script>
-        <script type="text/javascript" src="views/js/tooltip.jquery.js">
+        <script type="text/javascript" src="<?php print Url::get_js_url('tooltip.jquery.js'); ?>">
         </script>
-        <script type="text/javascript" src="views/js/tooltips.js">
+        <script type="text/javascript" src="<?php print Url::get_js_url('tooltips.js'); ?>">
         </script>
-        <link type="text/css" rel="stylesheet" href="views/css/tooltip.css" />
+        <link type="text/css" rel="stylesheet" href="<?php print Url::get_css_url('tooltip.css'); ?>" />
     </head>
     <body>
         <p>Any given text... <a class="tooltip" href="#tooltip1">and a tooltip</a>.</p>
