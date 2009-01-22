@@ -15,7 +15,7 @@ class Home extends Controller
     public function tooltips1()
     {
         $this->_setData('title', 'Tooltips using jQuery');
-        $this->_setView('tooltips1');
+        $this->_setView('tooltips1', 'ajax.xsl');
     }
     public function tooltips2()
     {
