@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tootlip examples</title>
+        <title><?php print $title; ?></title>
         <script type="text/javascript" src="<?php print Url::get_js_url('jquery-1.3.js'); ?>">
         </script>
         <script type="text/javascript" src="<?php print Url::get_js_url('tooltip.jquery.js'); ?>">
@@ -12,7 +12,9 @@
         <link type="text/css" rel="stylesheet" href="<?php print Url::get_css_url('tooltip.css'); ?>" />
     </head>
     <body>
-        <p>Any given text... <a class="tooltip" href="#tooltip1">and a tooltip</a>.</p>
+        <p>
+            Any given text... <a class="tooltip" href="#tooltip1">and a tooltip</a>.
+        </p>
         <p>
             Unfortunately, designing this way highlights the flaws in the various implementations of CSS. Different browsers display differently, even completely valid CSS at times, and this becomes maddening when a fix for one leads to breakage in another. View the Resources page for information on some of the fixes available. Full browser compliance is still sometimes a pipe dream, and we do not expect you to come up with pixel-perfect code across every platform. But do test in as many as you can. If your design doesn’t work in at least IE5+/Win and Mozilla (run by over 90% of the population), chances are we won’t accept it. 
             Some text and another <a class="tooltip" href="#tooltip2">amazing tooltip</a>.
