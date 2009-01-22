@@ -1,13 +1,16 @@
 <?php
-class Url
+require_once 'lib/Config.class.php';
+class Url implements Config
 {
-    public static function get_param($name)
+    public static function get_param ($name)
     {
-        $param = isset ($_REQUEST[$name])?$_REQUEST[$name]:NULL;
-        return $param;
+        return isset($_REQUEST[$name]) ? $_REQUEST[$name] : NULL;
     }
-    public static function get_url($c, $a)
+    public static function get_url ($c, $a)
     {
-        return '?'.http_build_query( array ('c'=>$c, 'a'=>$a));
+        return Url::WWWROOT . '?' . http_build_query(array(
+            'c' => $c, 
+            'a' => $a
+        ));
     }
 }
