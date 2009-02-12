@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns:terre="http://www.w3schools.com/furniture">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>
             <?php print $title; ?>
-        </title>        
+        </title>
     </head>
     <body>
         <h1>Available tests</h1>
@@ -21,6 +21,9 @@
             <li>
                 <a href="<?php print Url::get_url('home','xml'); ?>">Incluir XML por AJAX</a>
             </li>
+            <li>
+                <a href="<?php print Url::get_url('home','player'); ?>">Implementación de Yahoo! Media Player</a>
+            </li>            
         </ul>
     </body>
 </html>

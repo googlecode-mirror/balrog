@@ -27,4 +27,8 @@ class Home extends Controller
         $this->_setData('title', 'Autoloading XML');
         $this->_setView('xml');
     }
+    public function player(){
+        $this->_setData('title', 'Yahoo! Media Player');
+        $this->_setView('player');
+    }
 }
