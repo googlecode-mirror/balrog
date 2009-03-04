@@ -1,40 +1,32 @@
 <?php
 require_once 'lib/Path.class.php';
 class View
-{    
+{
     private $data;
     private $template;
     private $theme;
-    public function __construct ($template, $theme = 'template.xsl')
+    public function __construct ()
+    {}
+    public function display ()
     {
-        $this->template = $template;
-        $this->theme = $theme;
-    }
-    public function display ($data)
-    {
-        extract($data);
-        ob_start();
-        include Path::get_html_path($this->name . '.html');
-        $xhtml = ob_get_contents();
-        ob_end_clean();
         $proc = new XSLTProcessor();
-        $xslDoc = new DOMDocument();
-        $xslDoc->load(Path::get_inc_path($this->template));
-        $proc->importStylesheet($xslDoc);
-        $xmlDoc = new DOMDocument();
-        $xmlDoc->loadXML($xhtml);
-        echo $proc->transformToXML($xmlDoc);
+        $proc->importStylesheet($this->template);
+        echo $proc->transformToXML($this->dataToXML());
     }
-    public function setData($key, $value){
-        
+    public function setData ($key, $value)
+    {}
+    public function setTemplate ($path)
+    {
+        $this->template = new DOMDocument();
+        $this->template->load(Path::get_inc_path($path));
     }
-    public function setTemplate(){
-        
-    }
-    public function setTheme(){
-        
-    }
-    private function dataToXML(){
-        
+    public function setTheme ()
+    {}
+    private function dataToXML ()
+    {
+        $xml = new DOMDocument();
+        $xml->createElement('content');
+        foreach ($this->data as $element) {}
+        return $xml;
     }
 }
