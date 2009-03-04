@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <elements>
+	<comment>AAA</comment>
     <element>
         <title>
             Primer Elemento
         </title>
     </element>
-    <element>
+    <element nombre="segundo">
         <title>
+        	<teaser>Segundo</teaser>
             Segundo Elemento
         </title>
     </element>
@@ -14,5 +16,5 @@
         <title>
             Tercer Elemento
         </title>
-    </element>
+    </element>	
 </elements>

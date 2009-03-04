@@ -1,13 +1,14 @@
 <?php
 require_once 'lib/Path.class.php';
 class View
-{
-    private $name;
+{    
+    private $data;
     private $template;
-    public function __construct ($name, $template = 'template.xsl')
+    private $theme;
+    public function __construct ($template, $theme = 'template.xsl')
     {
-        $this->name = $name;
         $this->template = $template;
+        $this->theme = $theme;
     }
     public function display ($data)
     {
@@ -16,12 +17,24 @@ class View
         include Path::get_html_path($this->name . '.html');
         $xhtml = ob_get_contents();
         ob_end_clean();
+        $proc = new XSLTProcessor();
         $xslDoc = new DOMDocument();
         $xslDoc->load(Path::get_inc_path($this->template));
+        $proc->importStylesheet($xslDoc);
         $xmlDoc = new DOMDocument();
         $xmlDoc->loadXML($xhtml);
-        $proc = new XSLTProcessor();
-        $proc->importStylesheet($xslDoc);
         echo $proc->transformToXML($xmlDoc);
+    }
+    public function setData($key, $value){
+        
+    }
+    public function setTemplate(){
+        
+    }
+    public function setTheme(){
+        
+    }
+    private function dataToXML(){
+        
     }
 }
