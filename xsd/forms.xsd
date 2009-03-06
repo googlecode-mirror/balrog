@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/forms"
+	xmlns:tns="http://www.example.org/forms"
+	elementFormDefault="qualified">
+	<complexType name="forms">
+		<sequence>
+			<element name="form" type="string" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+
+		</sequence>
+	</complexType>
+	<complexType name="form">
+		<sequence>
+			<element name="action" type="tns:action" maxOccurs="1" minOccurs="1"></element>
+			<element name="name" type="tns:name" maxOccurs="1" minOccurs="0"></element>
+			<element name="fields" type="tns:fields" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	<simpleType name="action">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="name">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<complexType name="fields">
+		<sequence>
+			<element name="field" type="tns:field" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="field">
+		<sequence>
+			<element name="type" type="tns:type" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="name" type="tns:name" maxOccurs="1"
+				minOccurs="1">
+			</element>
+            <element name="label" type="tns:label" maxOccurs="1" minOccurs="0"></element>
+            <element name="options" type="tns:options" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="validations" type="tns:validations"
+				maxOccurs="1" minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+	<simpleType name="label">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="type">
+		<list itemType="string">
+			<enumeration value="checkbox"></enumeration>
+			<enumeration value="checkboxes"></enumeration>
+			<enumeration value="radio list"></enumeration>
+			<enumeration value="radio"></enumeration>
+			<enumeration value="text"></enumeration>
+			<enumeration value="textarea"></enumeration>
+			<enumeration value="select"></enumeration>
+			<enumeration value="file"></enumeration>
+		</list>
+	</simpleType>
+
+
+	<complexType name="options">
+		<sequence>
+			<element name="option" type="tns:option" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="option">
+		<sequence>
+			<element name="value" type="tns:value" maxOccurs="1" minOccurs="0"></element>
+			<element name="label" type="tns:label" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<simpleType name="value">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+
+	<element name="forms" type="tns:forms"></element>
+
+	<element name="form" type="tns:form"></element>
+
+	<element name="fields" type="tns:fields"></element>
+
+	<element name="field" type="tns:field"></element>
+
+	<complexType name="validations">
+		<sequence>
+			<element name="validation" type="tns:validation" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+    <element name="options" type="tns:options"></element>
+
+    <element name="option" type="tns:option"></element>
+
+    <element name="validations" type="tns:validations"></element>
+
+    <simpleType name="validation">
+    	<list itemType="string">
+    		<enumeration value="email"></enumeration>
+    		<enumeration value="numeric"></enumeration>
+    		<enumeration value="alphanumeric"></enumeration>
+    	</list>
+    </simpleType>
+</schema>

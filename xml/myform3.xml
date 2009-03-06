@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE forms SYSTEM "../dtd/forms.dtd" >
+<forms>
+  <form>
+    <action>www.soydewilde.com.ar</action>
+    <fields>
+      <field>
+        <type>type</type>
+        <name>name</name>
+        <label>label</label>
+        <validations>
+        	<validation>validation</validation>
+        </validations>
+      </field>
+    </fields>
+  </form>
+</forms>
