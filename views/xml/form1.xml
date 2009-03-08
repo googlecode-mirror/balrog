@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost/balrog/views/xsl/template.xsl"?>
+<uvcms:forms xmlns:uvcms="http://www.uvcms.com/forms"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.uvcms.com/forms ../xsd/forms.xsd ">
+	<uvcms:form>
+		<uvcms:action>http:\\soydewilde.com.ar</uvcms:action>
+		<uvcms:fields>
+			<uvcms:field>
+				<uvcms:type>text</uvcms:type>
+				<uvcms:name>nombre</uvcms:name>
+				<uvcms:label>Nombre</uvcms:label>
+			</uvcms:field>
+			<uvcms:field>
+				<uvcms:type>text</uvcms:type>
+				<uvcms:name>apellido</uvcms:name>
+				<uvcms:label>Apellido</uvcms:label>
+			</uvcms:field>
+			<uvcms:field>
+				<uvcms:type>radio</uvcms:type>
+				<uvcms:name>sexo</uvcms:name>
+				<uvcms:label>Sexo</uvcms:label>
+				<uvcms:options>
+					<uvcms:option>
+						<uvcms:value>1</uvcms:value>
+						<uvcms:label>M</uvcms:label>
+					</uvcms:option>
+					<uvcms:option>
+						<uvcms:value>2</uvcms:value>
+						<uvcms:label>F</uvcms:label>
+					</uvcms:option>
+				</uvcms:options>
+			</uvcms:field>
+			<uvcms:field>
+				<uvcms:type>submit</uvcms:type>
+				<uvcms:name>submit</uvcms:name>
+				<uvcms:label>Mandar</uvcms:label>
+			</uvcms:field>
+		</uvcms:fields>
+	</uvcms:form>
+</uvcms:forms>
