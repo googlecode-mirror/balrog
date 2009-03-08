@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">	
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:uvcms="http://www.uvcms.com/forms">
+	<xsl:import href="html.forms.xsl"/>
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title>
-					<xsl:value-of select="html/head/title" />
-				</title>
-				<xsl:for-each select="html/head/script">
-					<xsl:copy-of select="self::*" />
-				</xsl:for-each>
-				<xsl:for-each select="html/head/link">
-					<xsl:copy-of select="self::*" />
-				</xsl:for-each>
+				<title>UVCMS XML Namespace</title>
+				<link rel="stylesheet" href="http://localhost/balrog/views/css/html.forms.css"></link>
 			</head>
 			<body>
-				<h1>Header de mi template.</h1>
-				<xsl:copy-of select="html/body/*" />
+				<h1>UVCMS XML Namespace</h1>
+				<xsl:apply-templates></xsl:apply-templates>
 			</body>
 		</html>
-	</xsl:template>	
+	</xsl:template>
 </xsl:stylesheet>

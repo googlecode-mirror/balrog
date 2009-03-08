@@ -7,7 +7,7 @@ $(document).ready(function() {
 		type: "post",
 		url: $("link#xml").attr("href"), // Utilizo un elemento link para obtener la url.
 		dataType: "xml",
-		async: false, // No debe ser asincrónico, puesto que tiene que estar listo cuando se carga el documento.
+		async: false, // No debe ser asincrï¿½nico, puesto que tiene que estar listo cuando se carga el documento.
 		success: function(xml) {
 			$(xml).find('element').each(function(i) {
 				$("<p />").insertBefore("#back").eq(0).append($(this).children("title").eq(0).text());
