@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="http://localhost/balrog/views/xsl/template.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/template.xsl"?>
 <uvcms:forms xmlns:uvcms="http://www.uvcms.com/forms"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.uvcms.com/forms ../xsd/forms.xsd ">
@@ -36,7 +36,22 @@
 					</uvcms:option>
 				</uvcms:options>
 			</uvcms:field>
+			
 			<uvcms:field>
+				<uvcms:type>select</uvcms:type>
+				<uvcms:name>lala</uvcms:name>
+				<uvcms:label>Status</uvcms:label>
+				<uvcms:options>
+					<uvcms:option>
+						<uvcms:value>0</uvcms:value>
+						<uvcms:label>&lt;empty&gt;</uvcms:label>
+					</uvcms:option>
+					<uvcms:option>
+						<uvcms:value>1</uvcms:value>
+						<uvcms:label>Accepted</uvcms:label>
+					</uvcms:option>
+				</uvcms:options>
+			</uvcms:field><uvcms:field>
 				<uvcms:type>submit</uvcms:type>
 				<uvcms:name>submit</uvcms:name>
 				<uvcms:label>Enviar</uvcms:label>
