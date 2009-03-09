@@ -4,7 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.uvcms.com/forms ../xsd/forms.xsd ">
 	<uvcms:form>
-		<uvcms:action>http:\\soydewilde.com.ar</uvcms:action>
+		<uvcms:action>http://soydewilde.com.ar</uvcms:action>
 		<uvcms:fields>
 			<uvcms:field>
 				<uvcms:type>text</uvcms:type>
@@ -15,6 +15,11 @@
 				<uvcms:type>text</uvcms:type>
 				<uvcms:name>apellido</uvcms:name>
 				<uvcms:label>Apellido</uvcms:label>
+			</uvcms:field>
+			<uvcms:field>
+				<uvcms:type>textarea</uvcms:type>
+				<uvcms:name>description</uvcms:name>
+				<uvcms:label>Descripción</uvcms:label>
 			</uvcms:field>
 			<uvcms:field>
 				<uvcms:type>radio</uvcms:type>
@@ -34,7 +39,7 @@
 			<uvcms:field>
 				<uvcms:type>submit</uvcms:type>
 				<uvcms:name>submit</uvcms:name>
-				<uvcms:label>Mandar</uvcms:label>
+				<uvcms:label>Enviar</uvcms:label>
 			</uvcms:field>
 		</uvcms:fields>
 	</uvcms:form>
