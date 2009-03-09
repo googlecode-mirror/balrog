@@ -4,27 +4,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.uvcms.com/forms ../xsd/forms.xsd ">
 	<uvcms:form>
-		<uvcms:action>http://soydewilde.com.ar</uvcms:action>
+		<uvcms:action>?a=process</uvcms:action>
 		<uvcms:fields>
 			<uvcms:field>
 				<uvcms:type>text</uvcms:type>
-				<uvcms:name>nombre</uvcms:name>
-				<uvcms:label>Nombre</uvcms:label>
+				<uvcms:name>firstname</uvcms:name>
+				<uvcms:label>First Name</uvcms:label>
 			</uvcms:field>
 			<uvcms:field>
 				<uvcms:type>text</uvcms:type>
-				<uvcms:name>apellido</uvcms:name>
-				<uvcms:label>Apellido</uvcms:label>
+				<uvcms:name>lastname</uvcms:name>
+				<uvcms:label>Last Name</uvcms:label>
 			</uvcms:field>
 			<uvcms:field>
 				<uvcms:type>textarea</uvcms:type>
 				<uvcms:name>description</uvcms:name>
-				<uvcms:label>Descripción</uvcms:label>
+				<uvcms:label>Description</uvcms:label>
 			</uvcms:field>
 			<uvcms:field>
 				<uvcms:type>radio</uvcms:type>
-				<uvcms:name>sexo</uvcms:name>
-				<uvcms:label>Sexo</uvcms:label>
+				<uvcms:name>sex</uvcms:name>
+				<uvcms:label>Sex</uvcms:label>
 				<uvcms:options>
 					<uvcms:option>
 						<uvcms:value>1</uvcms:value>
@@ -36,22 +36,27 @@
 					</uvcms:option>
 				</uvcms:options>
 			</uvcms:field>
-			
+
 			<uvcms:field>
-				<uvcms:type>select</uvcms:type>
-				<uvcms:name>lala</uvcms:name>
-				<uvcms:label>Status</uvcms:label>
+				<uvcms:type>checkboxes</uvcms:type>
+				<uvcms:name>interests</uvcms:name>
+				<uvcms:label>Insterests</uvcms:label>
 				<uvcms:options>
 					<uvcms:option>
-						<uvcms:value>0</uvcms:value>
-						<uvcms:label>&lt;empty&gt;</uvcms:label>
+						<uvcms:value>1</uvcms:value>
+						<uvcms:label>Internet</uvcms:label>
 					</uvcms:option>
 					<uvcms:option>
-						<uvcms:value>1</uvcms:value>
-						<uvcms:label>Accepted</uvcms:label>
+						<uvcms:value>2</uvcms:value>
+						<uvcms:label>Sports</uvcms:label>
+					</uvcms:option>
+					<uvcms:option>
+						<uvcms:value>3</uvcms:value>
+						<uvcms:label>Food</uvcms:label>
 					</uvcms:option>
 				</uvcms:options>
-			</uvcms:field><uvcms:field>
+			</uvcms:field>
+			<uvcms:field>
 				<uvcms:type>submit</uvcms:type>
 				<uvcms:name>submit</uvcms:name>
 				<uvcms:label>Enviar</uvcms:label>

@@ -15,6 +15,6 @@ class FrontController
         $action = $this->action;
         $this->instance = new $this->controller();
         $this->instance->$action();
-        $this->instance->_finish();
+        $this->instance->_release();
     }
 }
