@@ -2,15 +2,7 @@
 <xsd:schema targetNamespace="http://www.uvcms.com/forms"
 	elementFormDefault="qualified"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:uvcms="http://www.uvcms.com/forms">
-	<xsd:element name="forms" type="uvcms:Forms"></xsd:element>
-	<xsd:complexType name="Forms">
-		<xsd:sequence>
-			<xsd:element name="form" type="uvcms:Form"
-				maxOccurs="unbounded" minOccurs="1">
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
+	xmlns:uvcms="http://www.uvcms.com/forms">
 
 	<xsd:complexType name="Form">
 		<xsd:sequence>
@@ -44,6 +36,8 @@
 						<xsd:enumeration value="textarea"></xsd:enumeration>
 						<xsd:enumeration value="file"></xsd:enumeration>
 						<xsd:enumeration value="select"></xsd:enumeration>
+						<xsd:enumeration value="submit"></xsd:enumeration>
+						<xsd:enumeration value="button"></xsd:enumeration>
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
@@ -101,4 +95,6 @@
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
+
+	<xsd:element name="form" type="uvcms:Form"></xsd:element>
 </xsd:schema>
