@@ -6,7 +6,7 @@
 		<html>
 			<head>
 				<title>UVCMS XML Namespace</title>
-				<link rel="stylesheet" href="http://localhost/balrog/views/css/html.forms.css"></link>
+				<link rel="stylesheet" href="../css/html.forms.css"></link>
 			</head>
 			<body>
 				<h1>UVCMS XML Namespace</h1>
