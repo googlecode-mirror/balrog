@@ -6,7 +6,25 @@
 		<xsl:apply-templates select="uvcms:field" />
 	</xsl:template>
 	<xsl:template match="uvcms:field">
-		<xsl:choose>			
+		<xsl:choose>
+			<xsl:when test="uvcms:type='textarea'">
+				<span>
+					<label>
+						<xsl:attribute name="for">
+							<xsl:value-of select="uvcms:name" />
+						</xsl:attribute>
+						<xsl:value-of select="uvcms:label"></xsl:value-of>
+						<xsl:text>: </xsl:text>
+					</label>
+				</span>
+				<span>
+					<textarea>
+						<xsl:attribute name="name">
+							<xsl:value-of select="uvcms:name"></xsl:value-of>
+						</xsl:attribute>
+					</textarea>
+				</span>
+			</xsl:when>
 			<xsl:when test="uvcms:type='submit'">
 				<span>
 					<input>
@@ -23,6 +41,7 @@
 					</input>
 				</span>
 			</xsl:when>
+
 			<xsl:when test="uvcms:type='radio'">
 				<span>
 					<label>
@@ -30,6 +49,7 @@
 							<xsl:value-of select="uvcms:name"></xsl:value-of>
 						</xsl:attribute>
 						<xsl:value-of select="uvcms:label"></xsl:value-of>
+						<xsl:text>: </xsl:text>
 					</label>
 				</span>
 				<xsl:apply-templates select="uvcms:options" />
@@ -41,6 +61,7 @@
 							<xsl:value-of select="uvcms:name"></xsl:value-of>
 						</xsl:attribute>
 						<xsl:value-of select="uvcms:label"></xsl:value-of>
+						<xsl:text>: </xsl:text>
 					</label>
 				</span>
 				<xsl:apply-templates select="uvcms:options" />
@@ -52,6 +73,7 @@
 							<xsl:value-of select="uvcms:name"></xsl:value-of>
 						</xsl:attribute>
 						<xsl:value-of select="uvcms:label"></xsl:value-of>
+						<xsl:text>: </xsl:text>
 					</label>
 				</span>
 				<select>
