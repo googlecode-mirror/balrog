@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.uvcms.com/forms"
-	elementFormDefault="qualified"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:uvcms="http://www.uvcms.com/forms">
+<xsd:schema targetNamespace="http://www.uvcms.com/views"
+	elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:uvcms="http://www.uvcms.com/views">
 	<xsd:complexType name="Form">
 		<xsd:sequence>
 			<xsd:element name="action" type="xsd:string" maxOccurs="1"
