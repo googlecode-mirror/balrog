@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.uvcms.com/forms"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:uvcms="http://www.uvcms.com/forms">
+	<include schemaLocation="form.xsd"></include>
+
+	<element name="view" type="uvcms:View"></element>
+
+	<complexType name="View">
+		<sequence>
+			<element ref="uvcms:form" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+</schema>
