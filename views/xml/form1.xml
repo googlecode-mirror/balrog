@@ -1,66 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../xsl/template.xsl"?>
-<uvcms:forms xmlns:uvcms="http://www.uvcms.com/forms"
+<uvcms:form xmlns:uvcms="http://www.uvcms.com/forms"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.uvcms.com/forms ../xsd/forms.xsd ">
-	<uvcms:form>
-		<uvcms:action>?a=process</uvcms:action>
-		<uvcms:fields>
-			<uvcms:field>
-				<uvcms:type>text</uvcms:type>
-				<uvcms:name>firstname</uvcms:name>
-				<uvcms:label>First Name</uvcms:label>
-			</uvcms:field>
-			<uvcms:field>
-				<uvcms:type>text</uvcms:type>
-				<uvcms:name>lastname</uvcms:name>
-				<uvcms:label>Last Name</uvcms:label>
-			</uvcms:field>
-			<uvcms:field>
-				<uvcms:type>textarea</uvcms:type>
-				<uvcms:name>description</uvcms:name>
-				<uvcms:label>Description</uvcms:label>
-			</uvcms:field>
-			<uvcms:field>
-				<uvcms:type>radio</uvcms:type>
-				<uvcms:name>sex</uvcms:name>
-				<uvcms:label>Sex</uvcms:label>
-				<uvcms:options>
-					<uvcms:option>
-						<uvcms:value>1</uvcms:value>
-						<uvcms:label>M</uvcms:label>
-					</uvcms:option>
-					<uvcms:option>
-						<uvcms:value>2</uvcms:value>
-						<uvcms:label>F</uvcms:label>
-					</uvcms:option>
-				</uvcms:options>
-			</uvcms:field>
+	<uvcms:action>?a=process</uvcms:action>
+	<uvcms:fields>
+		<uvcms:field>
+			<uvcms:type>text</uvcms:type>
+			<uvcms:name>firstname</uvcms:name>
+			<uvcms:label>First Name</uvcms:label>
+		</uvcms:field>
+		<uvcms:field>
+			<uvcms:type>text</uvcms:type>
+			<uvcms:name>lastname</uvcms:name>
+			<uvcms:label>Last Name</uvcms:label>
+		</uvcms:field>
+		<uvcms:field>
+			<uvcms:type>textarea</uvcms:type>
+			<uvcms:name>description</uvcms:name>
+			<uvcms:label>Description</uvcms:label>
+		</uvcms:field>
+		<uvcms:field>
+			<uvcms:type>radio</uvcms:type>
+			<uvcms:name>sex</uvcms:name>
+			<uvcms:label>Sex</uvcms:label>
+			<uvcms:options>
+				<uvcms:option>
+					<uvcms:value>1</uvcms:value>
+					<uvcms:label>M</uvcms:label>
+				</uvcms:option>
+				<uvcms:option>
+					<uvcms:value>2</uvcms:value>
+					<uvcms:label>F</uvcms:label>
+				</uvcms:option>
+			</uvcms:options>
+		</uvcms:field>
 
-			<uvcms:field>
-				<uvcms:type>checkboxes</uvcms:type>
-				<uvcms:name>interests</uvcms:name>
-				<uvcms:label>Insterests</uvcms:label>
-				<uvcms:options>
-					<uvcms:option>
-						<uvcms:value>1</uvcms:value>
-						<uvcms:label>Internet</uvcms:label>
-					</uvcms:option>
-					<uvcms:option>
-						<uvcms:value>2</uvcms:value>
-						<uvcms:label>Sports</uvcms:label>
-					</uvcms:option>
-					<uvcms:option>
-						<uvcms:value>3</uvcms:value>
-						<uvcms:label>Food</uvcms:label>
-					</uvcms:option>
-				</uvcms:options>
-			</uvcms:field>
-			<uvcms:field>
-				<uvcms:type>submit</uvcms:type>
-				<uvcms:name>submit</uvcms:name>
-				<uvcms:label>Enviar</uvcms:label>
-			</uvcms:field>
-		</uvcms:fields>
-	</uvcms:form>
-</uvcms:forms>
+		<uvcms:field>
+			<uvcms:type>checkboxes</uvcms:type>
+			<uvcms:name>interests</uvcms:name>
+			<uvcms:label>Insterests</uvcms:label>
+			<uvcms:options>
+				<uvcms:option>
+					<uvcms:value>1</uvcms:value>
+					<uvcms:label>Internet</uvcms:label>
+				</uvcms:option>
+				<uvcms:option>
+					<uvcms:value>2</uvcms:value>
+					<uvcms:label>Sports</uvcms:label>
+				</uvcms:option>
+				<uvcms:option>
+					<uvcms:value>3</uvcms:value>
+					<uvcms:label>Food</uvcms:label>
+				</uvcms:option>
+			</uvcms:options>
+		</uvcms:field>
+		<uvcms:field>
+			<uvcms:type>submit</uvcms:type>
+			<uvcms:name>submit</uvcms:name>
+			<uvcms:label>Enviar</uvcms:label>
+		</uvcms:field>
+	</uvcms:fields>
+</uvcms:form>

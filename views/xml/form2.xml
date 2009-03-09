@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uvcms:form xmlns:uvcms="http://www.uvcms.com/forms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.uvcms.com/forms ../xsd/forms.xsd ">
+  <uvcms:action>uvcms:action</uvcms:action>
+  <uvcms:fields>
+    <uvcms:field>
+      <uvcms:type>text</uvcms:type>
+      <uvcms:name>title</uvcms:name>
+      <uvcms:label>Title</uvcms:label>
+    </uvcms:field>
+    <uvcms:field>
+    	<uvcms:type>textarea</uvcms:type>
+    	<uvcms:name>body</uvcms:name>
+    	<uvcms:label>Body</uvcms:label>
+    </uvcms:field>
+    <uvcms:field>
+    	<uvcms:type>submit</uvcms:type>
+    	<uvcms:name>submit</uvcms:name>
+    	<uvcms:label>Send</uvcms:label>
+    </uvcms:field>
+  </uvcms:fields>
+</uvcms:form>
