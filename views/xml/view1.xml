@@ -2,6 +2,7 @@
 <uvcms:view xmlns:uvcms="http://www.uvcms.com/views"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.uvcms.com/views ../xsd/view.xsd ">
+	<uvcms:title>Home</uvcms:title>
 	<uvcms:form>
 		<uvcms:action>?a=process</uvcms:action>
 		<uvcms:fields>

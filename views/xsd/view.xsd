@@ -9,7 +9,8 @@
 
 	<complexType name="View">
 		<sequence>
-			<element ref="uvcms:form" maxOccurs="unbounded"
+            <element name="title" type="string"></element>
+            <element ref="uvcms:form" maxOccurs="unbounded"
 				minOccurs="0">
 			</element>
 		</sequence>

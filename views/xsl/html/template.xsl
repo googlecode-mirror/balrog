@@ -7,12 +7,13 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title>UVCMS XML Namespace: Forms</title>
+				<title><xsl:value-of select="uvcms:view/uvcms:title" /></title>
 				<link rel="stylesheet" href="views/css/html.forms.css" />
 			</head>
 			<body>
 				<h1>UVCMS XML Namespace: Forms</h1>
-				<xsl:apply-templates />
+				<h2><xsl:value-of select="uvcms:view/uvcms:title" /></h2>
+				<xsl:apply-templates select="uvcms:view/uvcms:form" />
 			</body>
 		</html>
 	</xsl:template>
