@@ -3,12 +3,12 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:uvcms="http://www.uvcms.com/views"
 	xmlns="http://www.w3.org/1999/xhtml">
-	<xsl:import href="form/template.xsl"/>	
+	<xsl:import href="content/template.xsl"/>	
 	<xsl:template match="/">
 		<html>
 			<head>
 				<title><xsl:value-of select="uvcms:view/uvcms:title" /></title>
-				<link rel="stylesheet" href="views/css/html.forms.css" />
+				<xsl:apply-templates select="uvcms:view/uvcms:meta" />				
 			</head>
 			<body>
 				<h1>UVCMS XML Namespace: Forms</h1>
