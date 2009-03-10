@@ -5,12 +5,14 @@
 
 	<include schemaLocation="data.xsd"></include>
 	<include schemaLocation="form.xsd"></include>
+	<include schemaLocation="meta.xsd"></include>
 	<element name="view" type="uvcms:View"></element>
 
 	<complexType name="View">
 		<sequence>
 			<element name="title" type="string"></element>
-			<element name="content" type="uvcms:Content" maxOccurs="1"
+            <element name="meta" type="uvcms:Meta" maxOccurs="1" minOccurs="0"></element>
+            <element name="content" type="uvcms:Content" maxOccurs="1"
 				minOccurs="1">
 			</element>
 		</sequence>
@@ -24,7 +26,9 @@
 
 	<complexType name="Content">
 		<sequence>
-			<element name="form" type="uvcms:Form" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="form" type="uvcms:Form" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
 		</sequence>
 	</complexType>
 </schema>
