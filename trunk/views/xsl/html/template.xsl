@@ -13,7 +13,7 @@
 			<body>
 				<h1>UVCMS XML Namespace: Forms</h1>
 				<h2><xsl:value-of select="uvcms:view/uvcms:title" /></h2>
-				<xsl:apply-templates select="uvcms:view/uvcms:form" />
+				<xsl:apply-templates select="uvcms:view/uvcms:content" />
 			</body>
 		</html>
 	</xsl:template>
