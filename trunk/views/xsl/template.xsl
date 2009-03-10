@@ -5,11 +5,11 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title>UVCMS XML Namespace</title>
+				<title><xsl:value-of select="uvcms:view/uvcms:title" /></title>
 				<link rel="stylesheet" href="../css/html.forms.css"></link>
 			</head>
 			<body>
-				<h1>UVCMS XML Namespace</h1>
+				<h1><xsl:value-of select="uvcms:view/uvcms:title" /></h1>
 				<xsl:apply-templates></xsl:apply-templates>
 			</body>
 		</html>
