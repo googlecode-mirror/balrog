@@ -7,18 +7,18 @@
 		<span>
 			<label>
 				<xsl:attribute name="for">
-							<xsl:value-of select="uvcms:name"></xsl:value-of>
-						</xsl:attribute>
+					<xsl:value-of select="uvcms:name"></xsl:value-of>
+				</xsl:attribute>
 				<xsl:value-of select="uvcms:label"></xsl:value-of>
 				<xsl:text>: </xsl:text>
 			</label>
 			<input>
 				<xsl:attribute name="type">
-							<xsl:value-of select="uvcms:type" />
-						</xsl:attribute>
+					<xsl:value-of select="uvcms:type" />
+				</xsl:attribute>
 				<xsl:attribute name="name">
-							<xsl:value-of select="uvcms:name" />
-						</xsl:attribute>
+					<xsl:value-of select="uvcms:name" />
+				</xsl:attribute>
 			</input>
 		</span>
 	</xsl:template>

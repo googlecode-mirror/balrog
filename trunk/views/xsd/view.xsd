@@ -10,8 +10,7 @@
 
 	<complexType name="View">
 		<sequence>
-			<element name="title" type="string"></element>
-            <element name="meta" type="uvcms:Meta" maxOccurs="1" minOccurs="0"></element>
+            <element name="meta" type="uvcms:Meta" maxOccurs="1" minOccurs="1"></element>
             <element name="content" type="uvcms:Content" maxOccurs="1"
 				minOccurs="1">
 			</element>

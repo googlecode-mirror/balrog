@@ -9,12 +9,12 @@ class View
         $this->setStylesheet($stylesheet);
         $this->setView($view);
     }
-    public function setStylesheet ($path)
+    private function setStylesheet ($path)
     {
         $this->stylesheet = new DOMDocument();
         $this->stylesheet->load($path);
     }
-    public function setView ($path)
+    private function setView ($path)
     {
         $this->view = new DOMDocument();
         $this->view->load($path);
