@@ -4,15 +4,15 @@
 	xmlns:uvcms="http://www.uvcms.com/views"
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:import href="content/template.xsl"/>	
+	<xsl:import href="meta/template.xsl"/>	
 	<xsl:template match="/">
 		<html>
-			<head>
-				<title><xsl:value-of select="uvcms:view/uvcms:title" /></title>
-				<xsl:apply-templates select="uvcms:view/uvcms:meta" />				
+			<head>				
+				<xsl:apply-templates select="uvcms:view/uvcms:meta" />
 			</head>
 			<body>
 				<h1>UVCMS XML Namespace: Forms</h1>
-				<h2><xsl:value-of select="uvcms:view/uvcms:title" /></h2>
+				<h2><xsl:value-of select="uvcms:view/uvcms:meta/uvcms:title" /></h2>
 				<xsl:apply-templates select="uvcms:view/uvcms:content" />
 			</body>
 		</html>

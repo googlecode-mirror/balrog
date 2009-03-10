@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uvcms:view xmlns:uvcms="http://www.uvcms.com/views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.uvcms.com/views ../xsd/view.xsd ">
-  <uvcms:title>Home</uvcms:title>
-  <uvcms:meta>
-  	<uvcms:call type="script" source="views/js/test.js" ></uvcms:call>
-  	<uvcms:call type="script" source="view/css/html.forms.css" />
-  </uvcms:meta>
+  
+  <uvcms:meta><uvcms:title>Home</uvcms:title></uvcms:meta>
   <uvcms:content>
   	<uvcms:form>
   		<uvcms:action>?a=process</uvcms:action>
@@ -25,5 +22,6 @@
   				<uvcms:label>Enviar</uvcms:label>
   			</uvcms:field>
   		</uvcms:fields>
-  	</uvcms:form></uvcms:content>
+  	</uvcms:form>
+  </uvcms:content>
 </uvcms:view>

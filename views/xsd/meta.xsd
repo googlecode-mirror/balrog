@@ -5,10 +5,13 @@
     
     <complexType name="Meta">
     	<sequence>
-    		<element name="call" type="uvcms:Call" maxOccurs="unbounded"
+            <element name="title" type="string" maxOccurs="1" minOccurs="1"></element>
+            <element name="call" type="uvcms:Call" maxOccurs="unbounded"
     			minOccurs="0">
     		</element>
-    		<element name="include" type="uvcms:Include" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="include" type="uvcms:Include"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
     	</sequence>
     </complexType>
 
