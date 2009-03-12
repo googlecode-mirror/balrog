@@ -17,6 +17,17 @@
   				<uvcms:label>Apellido</uvcms:label>
   			</uvcms:field>
   			<uvcms:field>
+  				<uvcms:type>radio</uvcms:type>
+  				<uvcms:name>equipos</uvcms:name>
+  				<uvcms:label>Equipos</uvcms:label>
+  				<uvcms:options uvcms:datasource="equipos">
+  					<uvcms:option>
+  						<uvcms:value>uvcms:value</uvcms:value>
+  						<uvcms:label>uvcms:label</uvcms:label>
+  					</uvcms:option>
+  				</uvcms:options>
+  			</uvcms:field>
+  			<uvcms:field>
   				<uvcms:type>submit</uvcms:type>
   				<uvcms:name>send</uvcms:name>
   				<uvcms:label>Enviar</uvcms:label>

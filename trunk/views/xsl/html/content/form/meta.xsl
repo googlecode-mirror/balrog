@@ -5,6 +5,6 @@
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template match="uvcms:meta">
 		<script src="views/js/test.js" ><![CDATA[&nbsp]]></script>
-		<link href="views/css/form.css" rel="stylesheet" />
+		<link href="views/css/form.css" rel="stylesheet" />		
 	</xsl:template>
 </xsl:stylesheet>

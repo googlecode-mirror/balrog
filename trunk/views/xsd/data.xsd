@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://www.uvcms.com/views" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:uvcms="http://www.uvcms.com/views">
 
-    <element name="databind" type="uvcms:DataBind"></element>
     
-    <complexType name="DataBind">
-        <attribute name="key" type="string" use="required"></attribute>
-        <attribute name="source" type="string" use="required"></attribute>
-    	<attribute name="datatag" type="string" use="required"></attribute>
+
+    
+    <element name="datavalue" type="uvcms:DataValue"></element>
+    
+    <element name="dataset" type="uvcms:DataSet"></element>
+    
+    <complexType name="DataSet">
+    	<sequence>
+    		<element name="datavalue" type="uvcms:DataValue"></element>
+    	</sequence>
     </complexType>
+
+    <simpleType name="DataValue">
+    	<restriction base="string"></restriction>
+    </simpleType>
+
+    <attribute name="datasource">
+    	<simpleType>
+    		<restriction base="uvcms:databind">
+    			<pattern value="\w+"></pattern>
+    		</restriction>
+    	</simpleType>
+    </attribute>
+    
+    <simpleType name="databind">
+    	<restriction base="string"></restriction>
+    </simpleType>
 </schema>
