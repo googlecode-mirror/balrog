@@ -25,5 +25,5 @@
 				</ul>
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template>
+	</xsl:template>	
 </xsl:stylesheet>
