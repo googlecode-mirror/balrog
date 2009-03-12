@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema targetNamespace="http://www.uvcms.com/views"
-	elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:uvcms="http://www.uvcms.com/views">
-	<xsd:complexType name="Form">
+	elementFormDefault="qualified"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:uvcms="http://www.uvcms.com/views">
+    <xsd:include schemaLocation="data.xsd"></xsd:include>
+    <xsd:complexType name="Form">
 		<xsd:sequence>
 			<xsd:element name="action" type="xsd:string" maxOccurs="1"
 				minOccurs="1">
@@ -61,8 +64,12 @@
 		<xsd:sequence>
 			<xsd:element name="option" type="uvcms:Option"
 				maxOccurs="unbounded" minOccurs="1">
-			</xsd:element>
+			</xsd:element>
+
 		</xsd:sequence>
+
+
+		<xsd:attribute ref="uvcms:datasource"></xsd:attribute>
 	</xsd:complexType>
 
 	<xsd:complexType name="Validations">
@@ -94,4 +101,8 @@
 	</xsd:complexType>
 
 	<xsd:element name="form" type="uvcms:Form"></xsd:element>
+    <xsd:attributeGroup name="NewAttributeGroup"></xsd:attributeGroup>
+
+    <xsd:attribute name="NewAttribute" type="xsd:string"></xsd:attribute>
+
 </xsd:schema>
