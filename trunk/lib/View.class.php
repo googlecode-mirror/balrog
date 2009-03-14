@@ -27,37 +27,38 @@ class View
     public function process ()
     {
         $xpath = new DOMXPath($this->view);
-        foreach ($this->data as $key => $value) {
+        foreach ($this->data as $key => $item) {
             $nodes = $xpath->query("//*[@uvcms:datasource='$key']");
-            $this->processData($nodes, $value);
+            $this->processData($nodes, $item);
         }
     }
-    public function processData ($nodes, $value)
+    public function processData ($nodes, $item)
     {
         for ($i = 0; $i < $nodes->length; $i ++) {
-            if (is_string($value)) {
-                $this->processValue($nodes->item($i), $value);
-            } elseif (is_array($value)) {
-                $this->processSet($nodes->item($i), $value);
+            if (is_string($item)) {
+                $this->processValue($nodes->item($i), $item);
+            } elseif (is_array($item)) {
+                $this->processSet($nodes->item($i), $item);
             }
         }
     }
     public function processSet ($node, $set)
     {
-        foreach ($set as $value) {
-            if (is_array($value)) {
+        foreach ($set as $value => $item) {
+            if (is_array($item)) {
                 $subnode = new DOMElement('uvcms:dataset', NULL, 'http://www.uvcms.com/views');
-                $this->processSet($subnode, $value);
+                $this->processSet($subnode, $item);
                 $node->appendChild($subnode);
             } else {
-                $this->processValue($node, $value);
+                $this->processValue($node, $item, $value);
             }
         }
     }
-    public function processValue ($node, $value)
+    public function processValue ($node, $item, $value)
     {
-        $element = new DOMElement('uvcms:datavalue', $value, 'http://www.uvcms.com/views');
-        $node->appendchild($element);
+        $element = new DOMElement('uvcms:dataitem', $item, 'http://www.uvcms.com/views');		
+        $node->appendchild($element);		
+		$element->setAttribute('value', $value);
     }
     public function render ()
     {
