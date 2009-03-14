@@ -4,29 +4,12 @@
     
 
     
-    <element name="datavalue" type="uvcms:DataValue"></element>
     
-    <element name="dataset" type="uvcms:DataSet"></element>
     
-    <complexType name="DataSet">
-    	<sequence>
-    		<element name="datavalue" type="uvcms:DataValue"></element>
-    	</sequence>
-    </complexType>
 
-    <simpleType name="DataValue">
-    	<restriction base="string"></restriction>
-    </simpleType>
 
-    <attribute name="datasource">
-    	<simpleType>
-    		<restriction base="uvcms:databind">
-    			<pattern value="\w+"></pattern>
-    		</restriction>
-    	</simpleType>
-    </attribute>
     
-    <simpleType name="databind">
-    	<restriction base="string"></restriction>
-    </simpleType>
+
+    <attribute name="databind" type="string"></attribute>
+
 </schema>

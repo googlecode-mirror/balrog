@@ -2,7 +2,6 @@
 <uvcms:view xmlns:uvcms="http://www.uvcms.com/views"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.uvcms.com/views ../xsd/view.xsd ">
-
 	<uvcms:meta>
 		<uvcms:title>Home</uvcms:title>
 	</uvcms:meta>
@@ -24,8 +23,8 @@
 					<uvcms:type>radio</uvcms:type>
 					<uvcms:name>equipos</uvcms:name>
 					<uvcms:label>Equipos</uvcms:label>
-					<uvcms:options uvcms:datasource="equipos">
-						<uvcms:option>
+					<uvcms:options>
+						<uvcms:option uvcms:databind="equipos">
 							<uvcms:value>uvcms:value</uvcms:value>
 							<uvcms:label>uvcms:label</uvcms:label>
 						</uvcms:option>

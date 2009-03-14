@@ -28,37 +28,48 @@ class View
     {
         $xpath = new DOMXPath($this->view);
         foreach ($this->data as $key => $item) {
-            $nodes = $xpath->query("//*[@uvcms:datasource='$key']");
-            $this->processData($nodes, $item);
+            $nodes = $xpath->query("//*[@uvcms:databind='$key']");
+            for ($i = 0; $i < $nodes->length; $i ++) {
+                $node = new DOMElement($nodes->item($i)->nodeName, NULL, 'http://www.uvcms.com/views');
+                $nodes->item($i)->parentNode->appendChild($node);
+                $nodes->item($i)->parentNode->removeChild($nodes->item($i));
+                $this->processItem($node, $item);
+            }
         }
     }
-    public function processData ($nodes, $item)
+    public function processItem ($node, $item)
     {
-        for ($i = 0; $i < $nodes->length; $i ++) {
-            if (is_string($item)) {
-                $this->processValue($nodes->item($i), $item);
-            } elseif (is_array($item)) {
-                $this->processSet($nodes->item($i), $item);
-            }
+        if(is_object($item)){
+            $this->processObject($node, $item);
+        } elseif (is_array($item)) {
+            $this->processSet($node, $item);
+        } else {
+            $this->processValue($node, $item);
         }
     }
     public function processSet ($node, $set)
     {
-        foreach ($set as $value => $item) {
+        foreach ($set as $item) {
             if (is_array($item)) {
-                $subnode = new DOMElement('uvcms:dataset', NULL, 'http://www.uvcms.com/views');
+                $subnode = new DOMElement($node->nodeName, NULL, 'http://www.uvcms.com/views');
+                $node->parentNode->appendChild($subnode);
                 $this->processSet($subnode, $item);
-                $node->appendChild($subnode);
             } else {
-                $this->processValue($node, $item, $value);
+                $this->processValue($node, $item);
             }
         }
     }
-    public function processValue ($node, $item, $value)
+    public function processObject($node, $item){
+        foreach(get_object_vars($item) as $key => $value){
+            $element = new DOMElement('uvcms:'.$key, NULL, 'http://www.uvcms.com/views');
+            $node->appendChild($element);
+            $this->processItem($element, $value);
+        }
+    }
+    public function processValue ($node, $item)
     {
-        $element = new DOMElement('uvcms:dataitem', $item, 'http://www.uvcms.com/views');		
-        $node->appendchild($element);		
-		$element->setAttribute('value', $value);
+        $text = new DOMText($item);
+        $node->appendChild($text);
     }
     public function render ()
     {
