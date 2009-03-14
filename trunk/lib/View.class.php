@@ -49,14 +49,12 @@ class View
     }
     public function processSet ($node, $set)
     {
+        $parent = $node->parentNode;
+        $nodename = $node->nodeName;
         foreach ($set as $item) {
-            if (is_array($item)) {
-                $subnode = new DOMElement($node->nodeName, NULL, 'http://www.uvcms.com/views');
-                $node->parentNode->appendChild($subnode);
-                $this->processSet($subnode, $item);
-            } else {
-                $this->processValue($node, $item);
-            }
+            $this->processItem($node, $item);            
+            $node = new DOMElement($nodename, NULL, 'http://www.uvcms.com/views');
+            $parent->appendChild($node);
         }
     }
     public function processObject($node, $item){
