@@ -5,4 +5,3 @@ $controller = Url::get_param('c');
 $action = Url::get_param('a');
 $fc = new FrontController($controller, $action);
 $fc->excecute();
-// Comentario
