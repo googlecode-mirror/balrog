@@ -23,4 +23,8 @@
 			</element>
 		</sequence>
 	</complexType>
+
+	<group name="DataHolders">
+		<sequence></sequence>
+	</group>
 </schema>
