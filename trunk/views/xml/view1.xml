@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uvcms:view xmlns:uvcms="http://www.uvcms.com/views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.uvcms.com/views ../xsd/view.xsd ">
-  
-  <uvcms:meta><uvcms:title>Home</uvcms:title></uvcms:meta>
-  <uvcms:content>
-  	<uvcms:form>
-  		<uvcms:action>?a=process</uvcms:action>
-  		<uvcms:fields>
-  			<uvcms:field>
-  				<uvcms:type>text</uvcms:type>
-  				<uvcms:name>name</uvcms:name>
-  				<uvcms:label>Nombre</uvcms:label>
-  			</uvcms:field>
-  			<uvcms:field>
-  				<uvcms:type>text</uvcms:type>
-  				<uvcms:name>apellido</uvcms:name>
-  				<uvcms:label>Apellido</uvcms:label>
-  			</uvcms:field>
-  			<uvcms:field>
-  				<uvcms:type>radio</uvcms:type>
-  				<uvcms:name>equipos</uvcms:name>
-  				<uvcms:label>Equipos</uvcms:label>
-  				<uvcms:options uvcms:datasource="equipos">
-  					<uvcms:option>
-  						<uvcms:value>uvcms:value</uvcms:value>
-  						<uvcms:label>uvcms:label</uvcms:label>
-  					</uvcms:option>
-  				</uvcms:options>
-  			</uvcms:field>
-  			<uvcms:field>
-  				<uvcms:type>submit</uvcms:type>
-  				<uvcms:name>send</uvcms:name>
-  				<uvcms:label>Enviar</uvcms:label>
-  			</uvcms:field>
-  		</uvcms:fields>
-  	</uvcms:form>
-  </uvcms:content>
+<uvcms:view xmlns:uvcms="http://www.uvcms.com/views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.uvcms.com/views ../xsd/view.xsd ">
+
+	<uvcms:meta>
+		<uvcms:title>Home</uvcms:title>
+	</uvcms:meta>
+	<uvcms:content>
+		<uvcms:form>
+			<uvcms:action>?a=process</uvcms:action>
+			<uvcms:fields>
+				<uvcms:field>
+					<uvcms:type>text</uvcms:type>
+					<uvcms:name>name</uvcms:name>
+					<uvcms:label>Nombre</uvcms:label>
+				</uvcms:field>
+				<uvcms:field>
+					<uvcms:type>text</uvcms:type>
+					<uvcms:name>apellido</uvcms:name>
+					<uvcms:label>Apellido</uvcms:label>
+				</uvcms:field>
+				<uvcms:field>
+					<uvcms:type>radio</uvcms:type>
+					<uvcms:name>equipos</uvcms:name>
+					<uvcms:label>Equipos</uvcms:label>
+					<uvcms:options uvcms:datasource="equipos">
+						<uvcms:option>
+							<uvcms:value>uvcms:value</uvcms:value>
+							<uvcms:label>uvcms:label</uvcms:label>
+						</uvcms:option>
+					</uvcms:options>
+				</uvcms:field>
+				<uvcms:field>
+					<uvcms:type>submit</uvcms:type>
+					<uvcms:name>send</uvcms:name>
+					<uvcms:label>Enviar</uvcms:label>
+				</uvcms:field>
+			</uvcms:fields>
+		</uvcms:form>
+	</uvcms:content>
 </uvcms:view>
