@@ -15,8 +15,10 @@
 			<body>
 				<div id="header">
 					<h1>
-						<xsl:text>UVCMS XML Namespace: </xsl:text>
+						<a href="?c=home">
+						<xsl:text>UVCMS XML Namespace: </xsl:text>						
 						<xsl:value-of select="uvcms:view/uvcms:meta/uvcms:title" />
+						</a>
 					</h1>
 				</div>
 				<div id="content">					
