@@ -2,5 +2,6 @@
 interface Config
 {
     const WWWROOT = 'http://localhost/balrog';
-    const DIRROOT = 'D:\Development\xampp\htdocs\balrog';
+    const DIRROOT = 'E:\xampp\htdocs\balrog';
+    const CLIENTMODE = TRUE;
 }

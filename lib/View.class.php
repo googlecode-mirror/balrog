@@ -1,6 +1,7 @@
 <?php
-class View
-{
+require_once 'lib/Config.interface.php';
+class View implements Config
+{    
     private $stylesheet;
     private $view;
     private $data;
@@ -39,7 +40,7 @@ class View
     }
     public function processItem ($node, $item)
     {
-        if(is_object($item)){
+        if (is_object($item)) {
             $this->processObject($node, $item);
         } elseif (is_array($item)) {
             $this->processSet($node, $item);
@@ -51,15 +52,17 @@ class View
     {
         $parent = $node->parentNode;
         $nodename = $node->nodeName;
+        $parent->removeChild($node);
         foreach ($set as $item) {
-            $this->processItem($node, $item);            
             $node = new DOMElement($nodename, NULL, 'http://www.uvcms.com/views');
             $parent->appendChild($node);
+            $this->processItem($node, $item);
         }
     }
-    public function processObject($node, $item){
-        foreach(get_object_vars($item) as $key => $value){
-            $element = new DOMElement('uvcms:'.$key, NULL, 'http://www.uvcms.com/views');
+    public function processObject ($node, $item)
+    {
+        foreach (get_object_vars($item) as $key => $value) {
+            $element = new DOMElement('uvcms:' . $key, NULL, 'http://www.uvcms.com/views');
             $node->appendChild($element);
             $this->processItem($element, $value);
         }
@@ -71,9 +74,15 @@ class View
     }
     public function render ()
     {
-        //echo $this->view->saveHTML(); exit;
-        $proc = new XSLTProcessor();
-        $proc->importStylesheet($this->stylesheet);
-        echo $proc->transformToXML($this->view);
+        if(self::CLIENTMODE){
+            header('Content-type: text/xml');           
+            echo $this->view->saveXML();
+            exit;
+        } else {
+            $proc = new XSLTProcessor();
+            $proc->importStylesheet($this->stylesheet);
+            echo $proc->transformToXML($this->view);
+            exit;
+        }
     }
 }
