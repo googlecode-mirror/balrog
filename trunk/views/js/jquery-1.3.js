@@ -790,371 +790,360 @@
 					var ret, style = elem.style;
 
 					// We need to handle opacity special in IE
-					if (name == "opacity" && !jQuery.support.opacity) {
-						ret = jQuery.attr(style, "opacity");
+				if (name == "opacity" && !jQuery.support.opacity) {
+					ret = jQuery.attr(style, "opacity");
 
-						return ret == "" ? "1" : ret;
-					}
+					return ret == "" ? "1" : ret;
+				}
 
-					// Make sure we're using the right name for getting the float value
+				// Make sure we're using the right name for getting the float value
+				if (name.match(/float/i))
+					name = styleFloat;
+
+				if (!force && style && style[name])
+					ret = style[name];
+				else if (defaultView.getComputedStyle) {
+
+					// Only "float" is needed here
 					if (name.match(/float/i))
-						name = styleFloat;
+						name = "float";
 
-					if (!force && style && style[name])
-						ret = style[name];
-					else if (defaultView.getComputedStyle) {
+					name = name.replace(/([A-Z])/g, "-$1").toLowerCase();
 
-						// Only "float" is needed here
-						if (name.match(/float/i))
-							name = "float";
+					var computedStyle = defaultView
+							.getComputedStyle(elem, null);
 
-						name = name.replace(/([A-Z])/g, "-$1").toLowerCase();
+					if (computedStyle)
+						ret = computedStyle.getPropertyValue(name);
 
-						var computedStyle = defaultView.getComputedStyle(elem,
-								null);
+					// We should always get a number back from opacity
+					if (name == "opacity" && ret == "")
+						ret = "1";
 
-						if (computedStyle)
-							ret = computedStyle.getPropertyValue(name);
-
-						// We should always get a number back from opacity
-						if (name == "opacity" && ret == "")
-							ret = "1";
-
-					} else if (elem.currentStyle) {
-						var camelCase = name.replace(/\-(\w)/g, function(all,
-								letter) {
-							return letter.toUpperCase();
-						});
-
-						ret = elem.currentStyle[name]
-								|| elem.currentStyle[camelCase];
-
-						// From the awesome hack by Dean Edwards
-						// http://erik.eae.net/archives/2007/07/27/18.54.15/#comment-102291
-
-						// If we're not dealing with a regular pixel number
-						// but a number that has a weird ending, we need to
-						// convert it to pixels
-						if (!/^\d+(px)?$/i.test(ret) && /^\d/.test(ret)) {
-							// Remember the original values
-							var left = style.left, rsLeft = elem.runtimeStyle.left;
-
-							// Put in the new values to get a computed value out
-							elem.runtimeStyle.left = elem.currentStyle.left;
-							style.left = ret || 0;
-							ret = style.pixelLeft + "px";
-
-							// Revert the changed values
-							style.left = left;
-							elem.runtimeStyle.left = rsLeft;
-						}
-					}
-
-					return ret;
-				},
-
-				clean : function(elems, context, fragment) {
-					context = context || document;
-
-					// !context.createElement fails in IE with an error but
-					// returns typeof 'object'
-					if (typeof context.createElement === "undefined")
-						context = context.ownerDocument || context[0]
-								&& context[0].ownerDocument || document;
-
-					// If a single string is passed in and it's a single tag
-					// just do a createElement and skip the rest
-					if (!fragment && elems.length === 1
-							&& typeof elems[0] === "string") {
-						var match = /^<(\w+)\s*\/?>$/.exec(elems[0]);
-						if (match)
-							return [ context.createElement(match[1]) ];
-					}
-
-					var ret = [], scripts = [], div = context
-							.createElement("div");
-
-					jQuery
-							.each(elems, function(i, elem) {
-								if (typeof elem === "number")
-									elem += '';
-
-								if (!elem)
-									return;
-
-								// Convert html string into DOM nodes
-									if (typeof elem === "string") {
-										// Fix "XHTML"-style tags in all browsers
-									elem = elem
-											.replace(
-													/(<(\w+)[^>]*?)\/>/g,
-													function(all, front, tag) {
-														return tag
-																.match(/^(abbr|br|col|img|input|link|meta|param|hr|area|embed)$/i) ? all
-																: front + "></"
-																		+ tag
-																		+ ">";
-													});
-
-									// Trim whitespace, otherwise indexOf won't
-									// work as expected
-									var tags = jQuery.trim(elem).toLowerCase();
-
-									var wrap = // option or optgroup
-									!tags.indexOf("<opt")
-											&& [
-													1,
-													"<select multiple='multiple'>",
-													"</select>" ]
-											||
-
-											!tags.indexOf("<leg")
-											&& [ 1, "<fieldset>", "</fieldset>" ]
-											||
-
-											tags
-													.match(/^<(thead|tbody|tfoot|colg|cap)/)
-											&& [ 1, "<table>", "</table>" ]
-											||
-
-											!tags.indexOf("<tr")
-											&& [ 2, "<table><tbody>",
-													"</tbody></table>" ]
-											||
-
-											// <thead> matched above
-											(!tags.indexOf("<td") || !tags
-													.indexOf("<th"))
-											&& [ 3, "<table><tbody><tr>",
-													"</tr></tbody></table>" ]
-											||
-
-											!tags.indexOf("<col")
-											&& [
-													2,
-													"<table><tbody></tbody><colgroup>",
-													"</colgroup></table>" ]
-											||
-
-											// IE can't serialize <link> and
-											// <script> tags normally
-											!jQuery.support.htmlSerialize
-											&& [ 1, "div<div>", "</div>" ] ||
-
-											[ 0, "", "" ];
-
-									// Go to html and back, then peel off extra
-									// wrappers
-									div.innerHTML = wrap[1] + elem + wrap[2];
-
-									// Move to the right depth
-									while (wrap[0]--)
-										div = div.lastChild;
-
-									// Remove IE's autoinserted <tbody> from
-									// table fragments
-									if (!jQuery.support.tbody) {
-
-										// String was a <table>, *may* have spurious <tbody>
-										var tbody = !tags.indexOf("<table")
-												&& tags.indexOf("<tbody") < 0 ? div.firstChild
-												&& div.firstChild.childNodes
-												: // String was a bare <thead> or <tfoot>
-												wrap[1] == "<table>"
-														&& tags
-																.indexOf("<tbody") < 0 ? div.childNodes
-														: [];
-
-										for ( var j = tbody.length - 1; j >= 0; --j)
-											if (jQuery.nodeName(tbody[j],
-													"tbody")
-													&& !tbody[j].childNodes.length)
-												tbody[j].parentNode
-														.removeChild(tbody[j]);
-
-									}
-
-									// IE completely kills leading whitespace when innerHTML is used
-									if (!jQuery.support.leadingWhitespace
-											&& /^\s/.test(elem))
-										div.insertBefore(context
-												.createTextNode(elem
-														.match(/^\s*/)[0]),
-												div.firstChild);
-
-									elem = jQuery.makeArray(div.childNodes);
-								}
-
-								if (elem.nodeType)
-									ret.push(elem);
-								else
-									ret = jQuery.merge(ret, elem);
-
-							});
-
-					if (fragment) {
-						for ( var i = 0; ret[i]; i++) {
-							if (jQuery.nodeName(ret[i], "script")
-									&& (!ret[i].type || ret[i].type
-											.toLowerCase() === "text/javascript")) {
-								scripts
-										.push(ret[i].parentNode ? ret[i].parentNode
-												.removeChild(ret[i])
-												: ret[i]);
-							} else {
-								if (ret[i].nodeType === 1)
-									ret.splice
-											.apply(
-													ret,
-													[ i + 1, 0 ]
-															.concat(jQuery
-																	.makeArray(ret[i]
-																			.getElementsByTagName("script"))));
-								fragment.appendChild(ret[i]);
-							}
-						}
-
-						return scripts;
-					}
-
-					return ret;
-				},
-
-				attr : function(elem, name, value) {
-					// don't set attributes on text and comment nodes
-					if (!elem || elem.nodeType == 3 || elem.nodeType == 8)
-						return undefined;
-
-					var notxml = !jQuery.isXMLDoc(elem), // Whether we are setting (or getting)
-					set = value !== undefined;
-
-					// Try to normalize/fix the name
-					name = notxml && jQuery.props[name] || name;
-
-					// Only do all the following if this is a node (faster for
-					// style)
-					// IE elem.getAttribute passes even for style
-					if (elem.tagName) {
-
-						// These attributes require special treatment
-						var special = /href|src|style/.test(name);
-
-						// Safari mis-reports the default selected property of a
-						// hidden option
-						// Accessing the parent's selectedIndex property fixes
-						// it
-						if (name == "selected" && elem.parentNode)
-							elem.parentNode.selectedIndex;
-
-						// If applicable, access the attribute via the DOM 0 way
-						if (name in elem && notxml && !special) {
-							if (set) {
-								// We can't allow the type property to be changed (since it causes problems in IE)
-								if (name == "type"
-										&& jQuery.nodeName(elem, "input")
-										&& elem.parentNode)
-									throw "type property can't be changed";
-
-								elem[name] = value;
-							}
-
-							// browsers index elements by id/name on forms, give priority to attributes.
-							if (jQuery.nodeName(elem, "form")
-									&& elem.getAttributeNode(name))
-								return elem.getAttributeNode(name).nodeValue;
-
-							// elem.tabIndex doesn't always return the correct
-							// value when it hasn't been explicitly set
-							// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
-							if (name == "tabIndex") {
-								var attributeNode = elem
-										.getAttributeNode("tabIndex");
-								return attributeNode && attributeNode.specified ? attributeNode.value
-										: elem.nodeName
-												.match(/^(a|area|button|input|object|select|textarea)$/i) ? 0
-												: undefined;
-							}
-
-							return elem[name];
-						}
-
-						if (!jQuery.support.style && notxml && name == "style")
-							return jQuery.attr(elem.style, "cssText", value);
-
-						if (set)
-							// convert the value to a string (all browsers do
-							// this but IE) see #1070
-							elem.setAttribute(name, "" + value);
-
-						var attr = !jQuery.support.hrefNormalized && notxml
-								&& special // Some attributes require a special
-											// call on IE
-						? elem.getAttribute(name, 2) : elem.getAttribute(name);
-
-						// Non-existent attributes return null, we normalize to
-						// undefined
-						return attr === null ? undefined : attr;
-					}
-
-					// elem is actually elem.style ... set the style
-
-					// IE uses filters for opacity
-					if (!jQuery.support.opacity && name == "opacity") {
-						if (set) {
-							// IE has trouble with opacity if it does not have layout
-							// Force it by setting the zoom level
-							elem.zoom = 1;
-
-							// Set the alpha filter to set the opacity
-							elem.filter = (elem.filter || "").replace(
-									/alpha\([^)]*\)/, "")
-									+ (parseInt(value) + '' == "NaN" ? ""
-											: "alpha(opacity=" + value * 100
-													+ ")");
-						}
-
-						return elem.filter
-								&& elem.filter.indexOf("opacity=") >= 0 ? (parseFloat(elem.filter
-								.match(/opacity=([^)]*)/)[1]) / 100) + ''
-								: "";
-					}
-
-					name = name.replace(/-([a-z])/ig, function(all, letter) {
+				} else if (elem.currentStyle) {
+					var camelCase = name.replace(/\-(\w)/g, function(all,
+							letter) {
 						return letter.toUpperCase();
 					});
 
-					if (set)
-						elem[name] = value;
+					ret = elem.currentStyle[name]
+							|| elem.currentStyle[camelCase];
 
-					return elem[name];
-				},
+					// From the awesome hack by Dean Edwards
+					// http://erik.eae.net/archives/2007/07/27/18.54.15/#comment-102291
 
-				trim : function(text) {
-					return (text || "").replace(/^\s+|\s+$/g, "");
-				},
+					// If we're not dealing with a regular pixel number
+					// but a number that has a weird ending, we need to
+					// convert it to pixels
+					if (!/^\d+(px)?$/i.test(ret) && /^\d/.test(ret)) {
+						// Remember the original values
+						var left = style.left, rsLeft = elem.runtimeStyle.left;
 
-				makeArray : function(array) {
-					var ret = [];
+						// Put in the new values to get a computed value out
+						elem.runtimeStyle.left = elem.currentStyle.left;
+						style.left = ret || 0;
+						ret = style.pixelLeft + "px";
 
-					if (array != null) {
-						var i = array.length;
-						// The window, strings (and functions) also have
-						// 'length'
-						if (i == null || typeof array === "string"
-								|| jQuery.isFunction(array)
-								|| array.setInterval)
-							ret[0] = array;
-						else
-							while (i)
-								ret[--i] = array[i];
+						// Revert the changed values
+						style.left = left;
+						elem.runtimeStyle.left = rsLeft;
+					}
+				}
+
+				return ret;
+			},
+
+			clean : function(elems, context, fragment) {
+				context = context || document;
+
+				// !context.createElement fails in IE with an error but
+				// returns typeof 'object'
+				if (typeof context.createElement === "undefined")
+					context = context.ownerDocument || context[0]
+							&& context[0].ownerDocument || document;
+
+				// If a single string is passed in and it's a single tag
+				// just do a createElement and skip the rest
+				if (!fragment && elems.length === 1
+						&& typeof elems[0] === "string") {
+					var match = /^<(\w+)\s*\/?>$/.exec(elems[0]);
+					if (match)
+						return [ context.createElement(match[1]) ];
+				}
+
+				var ret = [], scripts = [], div = context.createElement("div");
+
+				jQuery
+						.each(elems, function(i, elem) {
+							if (typeof elem === "number")
+								elem += '';
+
+							if (!elem)
+								return;
+
+							// Convert html string into DOM nodes
+								if (typeof elem === "string") {
+									// Fix "XHTML"-style tags in all browsers
+								elem = elem
+										.replace(
+												/(<(\w+)[^>]*?)\/>/g,
+												function(all, front, tag) {
+													return tag
+															.match(/^(abbr|br|col|img|input|link|meta|param|hr|area|embed)$/i) ? all
+															: front + "></"
+																	+ tag + ">";
+												});
+
+								// Trim whitespace, otherwise indexOf won't
+								// work as expected
+								var tags = jQuery.trim(elem).toLowerCase();
+
+								var wrap = // option or optgroup
+								!tags.indexOf("<opt")
+										&& [ 1, "<select multiple='multiple'>",
+												"</select>" ]
+										||
+
+										!tags.indexOf("<leg")
+										&& [ 1, "<fieldset>", "</fieldset>" ]
+										||
+
+										tags
+												.match(/^<(thead|tbody|tfoot|colg|cap)/)
+										&& [ 1, "<table>", "</table>" ]
+										||
+
+										!tags.indexOf("<tr")
+										&& [ 2, "<table><tbody>",
+												"</tbody></table>" ]
+										||
+
+										// <thead> matched above
+										(!tags.indexOf("<td") || !tags
+												.indexOf("<th"))
+										&& [ 3, "<table><tbody><tr>",
+												"</tr></tbody></table>" ]
+										||
+
+										!tags.indexOf("<col")
+										&& [
+												2,
+												"<table><tbody></tbody><colgroup>",
+												"</colgroup></table>" ]
+										||
+
+										// IE can't serialize <link> and
+										// <script> tags normally
+										!jQuery.support.htmlSerialize
+										&& [ 1, "div<div>", "</div>" ] ||
+
+										[ 0, "", "" ];
+
+								// Go to html and back, then peel off extra
+								// wrappers
+								div.innerHTML = wrap[1] + elem + wrap[2];
+
+								// Move to the right depth
+								while (wrap[0]--)
+									div = div.lastChild;
+
+								// Remove IE's autoinserted <tbody> from
+								// table fragments
+								if (!jQuery.support.tbody) {
+
+									// String was a <table>, *may* have spurious <tbody>
+									var tbody = !tags.indexOf("<table")
+											&& tags.indexOf("<tbody") < 0 ? div.firstChild
+											&& div.firstChild.childNodes
+											: // String was a bare <thead> or <tfoot>
+											wrap[1] == "<table>"
+													&& tags.indexOf("<tbody") < 0 ? div.childNodes
+													: [];
+
+									for ( var j = tbody.length - 1; j >= 0; --j)
+										if (jQuery.nodeName(tbody[j], "tbody")
+												&& !tbody[j].childNodes.length)
+											tbody[j].parentNode
+													.removeChild(tbody[j]);
+
+								}
+
+								// IE completely kills leading whitespace when innerHTML is used
+								if (!jQuery.support.leadingWhitespace
+										&& /^\s/.test(elem))
+									div.insertBefore(
+											context.createTextNode(elem
+													.match(/^\s*/)[0]),
+											div.firstChild);
+
+								elem = jQuery.makeArray(div.childNodes);
+							}
+
+							if (elem.nodeType)
+								ret.push(elem);
+							else
+								ret = jQuery.merge(ret, elem);
+
+						});
+
+				if (fragment) {
+					for ( var i = 0; ret[i]; i++) {
+						if (jQuery.nodeName(ret[i], "script")
+								&& (!ret[i].type || ret[i].type.toLowerCase() === "text/javascript")) {
+							scripts.push(ret[i].parentNode ? ret[i].parentNode
+									.removeChild(ret[i]) : ret[i]);
+						} else {
+							if (ret[i].nodeType === 1)
+								ret.splice
+										.apply(
+												ret,
+												[ i + 1, 0 ]
+														.concat(jQuery
+																.makeArray(ret[i]
+																		.getElementsByTagName("script"))));
+							fragment.appendChild(ret[i]);
+						}
 					}
 
-					return ret;
-				},
+					return scripts;
+				}
 
-				inArray : function(elem, array) {
-					for ( var i = 0, length = array.length; i < length; i++)
-						// Use === because on IE, window == document
+				return ret;
+			},
+
+			attr : function(elem, name, value) {
+				// don't set attributes on text and comment nodes
+				if (!elem || elem.nodeType == 3 || elem.nodeType == 8)
+					return undefined;
+
+				var notxml = !jQuery.isXMLDoc(elem), // Whether we are setting (or getting)
+				set = value !== undefined;
+
+				// Try to normalize/fix the name
+				name = notxml && jQuery.props[name] || name;
+
+				// Only do all the following if this is a node (faster for
+				// style)
+				// IE elem.getAttribute passes even for style
+				if (elem.tagName) {
+
+					// These attributes require special treatment
+					var special = /href|src|style/.test(name);
+
+					// Safari mis-reports the default selected property of a
+					// hidden option
+					// Accessing the parent's selectedIndex property fixes
+					// it
+					if (name == "selected" && elem.parentNode)
+						elem.parentNode.selectedIndex;
+
+					// If applicable, access the attribute via the DOM 0 way
+					if (name in elem && notxml && !special) {
+						if (set) {
+							// We can't allow the type property to be changed (since it causes problems in IE)
+							if (name == "type"
+									&& jQuery.nodeName(elem, "input")
+									&& elem.parentNode)
+								throw "type property can't be changed";
+
+							elem[name] = value;
+						}
+
+						// browsers index elements by id/name on forms, give priority to attributes.
+						if (jQuery.nodeName(elem, "form")
+								&& elem.getAttributeNode(name))
+							return elem.getAttributeNode(name).nodeValue;
+
+						// elem.tabIndex doesn't always return the correct
+						// value when it hasn't been explicitly set
+						// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+						if (name == "tabIndex") {
+							var attributeNode = elem
+									.getAttributeNode("tabIndex");
+							return attributeNode && attributeNode.specified ? attributeNode.value
+									: elem.nodeName
+											.match(/^(a|area|button|input|object|select|textarea)$/i) ? 0
+											: undefined;
+						}
+
+						return elem[name];
+					}
+
+					if (!jQuery.support.style && notxml && name == "style")
+						return jQuery.attr(elem.style, "cssText", value);
+
+					if (set)
+						// convert the value to a string (all browsers do
+						// this but IE) see #1070
+						elem.setAttribute(name, "" + value);
+
+					var attr = !jQuery.support.hrefNormalized && notxml
+							&& special // Some attributes require a special
+					// call on IE
+					? elem.getAttribute(name, 2)
+							: elem.getAttribute(name);
+
+					// Non-existent attributes return null, we normalize to
+					// undefined
+					return attr === null ? undefined : attr;
+				}
+
+				// elem is actually elem.style ... set the style
+
+				// IE uses filters for opacity
+				if (!jQuery.support.opacity && name == "opacity") {
+					if (set) {
+						// IE has trouble with opacity if it does not have layout
+						// Force it by setting the zoom level
+						elem.zoom = 1;
+
+						// Set the alpha filter to set the opacity
+						elem.filter = (elem.filter || "").replace(
+								/alpha\([^)]*\)/, "")
+								+ (parseInt(value) + '' == "NaN" ? ""
+										: "alpha(opacity=" + value * 100 + ")");
+					}
+
+					return elem.filter && elem.filter.indexOf("opacity=") >= 0 ? (parseFloat(elem.filter
+							.match(/opacity=([^)]*)/)[1]) / 100) + ''
+							: "";
+				}
+
+				name = name.replace(/-([a-z])/ig, function(all, letter) {
+					return letter.toUpperCase();
+				});
+
+				if (set)
+					elem[name] = value;
+
+				return elem[name];
+			},
+
+			trim : function(text) {
+				return (text || "").replace(/^\s+|\s+$/g, "");
+			},
+
+			makeArray : function(array) {
+				var ret = [];
+
+				if (array != null) {
+					var i = array.length;
+					// The window, strings (and functions) also have
+				// 'length'
+				if (i == null || typeof array === "string"
+						|| jQuery.isFunction(array) || array.setInterval)
+					ret[0] = array;
+				else
+					while (i)
+						ret[--i] = array[i];
+			}
+
+			return ret;
+		},
+
+		inArray : function(elem, array) {
+			for ( var i = 0, length = array.length; i < length; i++)
+				// Use === because on IE, window == document
 				if (array[i] === elem)
 					return i;
 
@@ -2478,19 +2467,16 @@ empty : function() {
 					|| jQuery.data(elem, "events", {}), handle = jQuery.data(
 					elem, "handle")
 					|| jQuery
-							.data(
-									elem,
-									"handle",
-									function() {
-										// Handle the second event of a trigger and when
-										// an event is called after a page has
-										// unloaded
-										return typeof jQuery !== "undefined"
-												&& !jQuery.event.triggered ? jQuery.event.handle
-												.apply(arguments.callee.elem,
-														arguments)
-												: undefined;
-									});
+							.data(elem, "handle", function() {
+								// Handle the second event of a trigger and when
+									// an event is called after a page has
+									// unloaded
+									return typeof jQuery !== "undefined"
+											&& !jQuery.event.triggered ? jQuery.event.handle
+											.apply(arguments.callee.elem,
+													arguments)
+											: undefined;
+								});
 			// Add elem as a property of the handle function
 			// This is to prevent a memory leak with non-native
 			// event in IE.
@@ -2776,11 +2762,11 @@ empty : function() {
 			// Fix target property, if necessary
 			if (!event.target)
 				event.target = event.srcElement || document; // Fixes #1925
-																// where
-																// srcElement
-																// might not be
-																// defined
-																// either
+			// where
+			// srcElement
+			// might not be
+			// defined
+			// either
 			// check if target is a textnode (safari)
 			if (event.target.nodeType == 3)
 				event.target = event.target.parentNode;
@@ -3361,10 +3347,10 @@ empty : function() {
 									self
 											.html(selector ? // Create a dummy div to hold the results
 											jQuery("<div/>") // inject the
-																// contents of
-																// the document
-																// in, removing
-																// the scripts
+													// contents of
+													// the document
+													// in, removing
+													// the scripts
 													// to avoid any 'Permission
 													// Denied' errors in IE
 													.append(
@@ -3372,9 +3358,9 @@ empty : function() {
 																	.replace(
 																			/<script(.|\s)*?\/script>/g,
 																			"")) // Locate
-																					// the
-																					// specified
-																					// elements
+													// the
+													// specified
+													// elements
 													.find(selector)
 													: // If not, just inject the full result
 													res.responseText);
@@ -4117,7 +4103,7 @@ empty : function() {
 						});
 
 					// start the next in the queue if the last step wasn't
-					// forced
+				// forced
 				if (!gotoEnd)
 					this.dequeue();
 
