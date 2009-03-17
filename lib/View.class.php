@@ -77,12 +77,12 @@ class View implements Config
         if(self::CLIENTMODE){
             header('Content-type: text/xml');           
             echo $this->view->saveXML();
-            exit;
+            exit();
         } else {
             $proc = new XSLTProcessor();
             $proc->importStylesheet($this->stylesheet);
             echo $proc->transformToXML($this->view);
-            exit;
+            exit();
         }
     }
 }
