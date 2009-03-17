@@ -10,7 +10,11 @@ div#header {
 	margin: 0;
 	display: block;
 	background-color: CCCCCC;
-	border-bottom: 1px solid #999999;	
+	border-bottom: 1px solid #999999;
+}
+
+div#header a{
+	text-decoration: none;	
 }
 
 div#content {
