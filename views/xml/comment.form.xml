@@ -5,7 +5,7 @@
   </uvcms:meta>
   <uvcms:content>
   	<uvcms:form>
-  		<uvcms:action><![CDATA[?c=comment&a=process]]></uvcms:action>
+  		<uvcms:action><![CDATA[?c=comments&a=process]]></uvcms:action>
   		<uvcms:name>comment</uvcms:name>
   		<uvcms:fields>
   			<uvcms:field>

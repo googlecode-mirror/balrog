@@ -6,10 +6,10 @@ abstract class MySQLiModel extends Model implements Config
     public function __construct(){
         $this->conn = new mysqli(self::DBHOST, self::DBUSER, self::DBPASS, self::DBNAME);        
     }
-    protected static function query($sql){     
+    protected function query($sql){     
         return $this->conn->query($sql);
     }
-    protected static function getLastID(){
+    protected function getLastID(){
         return $this->conn->insert_id;
     }
     public function __destruct(){
