@@ -1,23 +1,29 @@
 @CHARSET "UTF-8";
 
-body {
+* {
 	padding: 0;
 	margin: 0;
 }
+li {
+	margin: 10pt;
+}
 
 div#header {
-	padding: 10pt;
-	margin: 0;
+	padding: 10pt;	
 	display: block;
 	background-color: CCCCCC;
 	border-bottom: 1px solid #999999;
 }
 
 div#header a{
+	padding: 10pt;
 	text-decoration: none;	
 }
 
 div#content {
-	padding: 10pt;
-	margin: 0;
+	padding: 10pt;	
+}
+
+div#content li {
+	margin: 12pt;	
 }
