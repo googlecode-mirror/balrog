@@ -16,6 +16,9 @@ abstract class Controller
     {
         $this->view->setData($key, $value);
     }
+    protected function _getParam($name){
+        return isset($_REQUEST[$name]) ? $_REQUEST[$name] : NULL;
+    }
     public function _release ()
     {
         if(isset($this->view)){

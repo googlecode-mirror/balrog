@@ -5,11 +5,13 @@ class Comments extends Controller
 {
     public function index ()
     {
-        $this->_setView('xsl/html/template.xsl', 'xml/comments.xml');
-        $comment = new Comment();
-        $this->_setData('comments', Comment::getAll());
+        $this->_setView('xsl/html/template.xsl', 'xml/comment.form.xml');
     }
     public function process(){
-        print_r($_POST);
+        $comment = new Comment($this->_getParam('id'));        
+        $comment->setTitle($this->_getParam('title'));
+        $comment->setBody($this->_getParam('body'));
+        $comment->save();
+        $this->index();
     }
 }
