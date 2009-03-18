@@ -7,7 +7,7 @@ class Comments extends Controller
     {
         $this->_setView('xsl/html/template.xsl', 'xml/comments.xml');
         $comment = new Comment();
-        $this->_setData('comments', $comment->getAll());
+        $this->_setData('comments', Comment::getAll());
     }
     public function process(){
         print_r($_POST);
