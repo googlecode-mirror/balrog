@@ -3,5 +3,21 @@
   <uvcms:meta>
     <uvcms:title>Comments</uvcms:title>
   </uvcms:meta>
-  <uvcms:content/>
+  <uvcms:content>
+  	<uvcms:grid>
+  		<uvcms:columns>
+  			<uvcms:column>
+  				<uvcms:name>title</uvcms:name>
+  				<uvcms:label>Title</uvcms:label>
+  			</uvcms:column>
+  			<uvcms:column>
+  				<uvcms:name>date</uvcms:name>
+  				<uvcms:label>Date</uvcms:label>
+  			</uvcms:column>
+  		</uvcms:columns>
+  		<uvcms:rows>
+  			<uvcms:row>
+  				<uvcms:value>Titulo Harcodeado</uvcms:value>
+  				<uvcms:value>Fecha Hardcodeada</uvcms:value></uvcms:row></uvcms:rows>
+  	</uvcms:grid></uvcms:content>
 </uvcms:view>
