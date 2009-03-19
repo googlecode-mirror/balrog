@@ -10,6 +10,7 @@
 				<xsl:apply-templates select="uvcms:view/uvcms:meta" />
 				<link href="views/css/template.css" rel="stylesheet" />
 				<link href="views/css/form.css" rel="stylesheet" />
+				<link href="views/css/grid.css" rel="stylesheet" />
 				<script src="views/js/test.js"><![CDATA[&nbsp]]></script>
 			</head>
 			<body>

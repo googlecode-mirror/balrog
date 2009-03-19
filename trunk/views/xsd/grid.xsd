@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.uvcms.com/views" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:uvcms="http://www.uvcms.com/views">
+
+    <element name="grid" type="uvcms:Grid"></element>
+    
+    <complexType name="Grid">
+    	<sequence>
+    		<element name="columns" type="uvcms:Columns" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="rows" type="uvcms:Rows" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Columns">
+    	<sequence>
+    		<element name="column" type="uvcms:Column"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Column">
+    	<sequence>
+    		<element name="name" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="label" type="string" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Rows">
+    	<sequence>
+    		<element name="row" type="uvcms:Row" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Row">
+    	<sequence>
+    		<element name="value" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>

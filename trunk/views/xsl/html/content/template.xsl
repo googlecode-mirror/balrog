@@ -3,10 +3,11 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:uvcms="http://www.uvcms.com/views"
 	xmlns="http://www.w3.org/1999/xhtml">
-	<xsl:import href="./form/template.xsl"/>	
+	<xsl:import href="./form/template.xsl"/><xsl:import href="./grid/template.xsl"></xsl:import>
 	<xsl:template match="uvcms:content">
 		<div id="content">
 			<xsl:apply-templates />
 		</div>
 	</xsl:template>
+	
 </xsl:stylesheet>
