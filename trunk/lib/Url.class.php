@@ -2,31 +2,31 @@
 require_once 'lib/Config.interface.php';
 class Url implements Config
 {
-    public static function get_param ($name)
+    public static function get_param($name)
     {
-        return isset($_REQUEST[$name]) ? $_REQUEST[$name] : NULL;
+        return isset ($_REQUEST[$name])?$_REQUEST[$name]:NULL;
     }
-    public static function get_url ($c, $a)
+    public static function get_url($c, $a)
     {
-        return Url::WWWROOT . '?' . http_build_query(array(
-            'c' => $c, 
-            'a' => $a
+        return Url::WWWROOT.'?'.http_build_query( array (
+        'c'=>$c,
+        'a'=>$a
         ));
     }
-    public static function get_js_url ($filename)
+    public static function get_js_url($filename)
     {
-        return Url::WWWROOT . '/views/js/' . $filename;
+        return Url::WWWROOT.'/views/js/'.$filename;
     }
-    public static function get_css_url ($filename)
+    public static function get_css_url($filename)
     {
-        return Url::WWWROOT . '/views/css/' . $filename;
+        return Url::WWWROOT.'/views/css/'.$filename;
     }
-    public static function get_html_url ($filename)
+    public static function get_html_url($filename)
     {
-        return Url::WWWROOT . '/views/html/' . $filename;
+        return Url::WWWROOT.'/views/html/'.$filename;
     }
-    public static function get_inc_url ($filename)
+    public static function get_inc_url($filename)
     {
-        return Url::WWWROOT . '/views/inc/' . $filename;
+        return Url::WWWROOT.'/views/inc/'.$filename;
     }
 }
