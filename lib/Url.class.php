@@ -1,5 +1,4 @@
 <?php
-require_once 'lib/Config.interface.php';
 class Url implements Config
 {
     public static function get_param($name)
