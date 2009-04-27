@@ -1,7 +1,7 @@
 <?php
-require_once 'lib/Controller.class.php';
+require_once '../lib/XSLTController.class.php';
 require_once 'models/Comment.php';
-class Comments extends Controller
+class Comments extends XSLTController
 {
     public function index()
     {

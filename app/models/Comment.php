@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/MySQLiModel.class.php';
+require_once '../lib/MySQLiModel.class.php';
 class Comment extends MySQLiModel
 {
     private $id;
