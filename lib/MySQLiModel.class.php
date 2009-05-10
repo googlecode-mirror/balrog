@@ -2,10 +2,13 @@
 require_once '../lib/Model.class.php';
 abstract class MySQLiModel extends Model implements Config
 {
-	private $conn;
+	protected $conn;
 	public function __construct()
 	{
-		$this->conn = new mysqli(self::DBHOST, self::DBUSER, self::DBPASS, self::DBNAME);
+		$this->conn = self::getConnection();
+	}
+	protected static function getConnection(){
+		return new mysqli(self::DBHOST, self::DBUSER, self::DBPASS, self::DBNAME);
 	}
 	protected function query($sql)
 	{
