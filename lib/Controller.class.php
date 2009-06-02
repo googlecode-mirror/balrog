@@ -3,7 +3,7 @@ require_once '../lib/View.class.php';
 require_once '../lib/Path.class.php';
 abstract class Controller implements Config
 {	
-	protected $view;
+	private $view;
 	public function __construct()
 	{}
 	protected function _setView($view)
@@ -19,9 +19,9 @@ abstract class Controller implements Config
 		return isset ($_REQUEST[$name])?$_REQUEST[$name]:NULL;
 	}
 	public function _release()
-	{		
-		if ( isset ($this->view))		
-		{			
+	{
+		if ( isset ($this->view))
+		{
 			$this->view->process();
 			$this->view->render();
 		}

@@ -1,13 +1,12 @@
 <?php
-require_once '../lib/View.class.php';
+require_once '../lib/View.interface.php';
 class XSLTView extends View
 {
     private $stylesheet;    
     public function __construct($stylesheet, $view)
     {
-    	parent::__construct();
-        $this->setStylesheet($stylesheet);
-		$this->setView($view);
+        parent::__construct();
+        $this->setStylesheet($stylesheet);        
     }
     private function setStylesheet($path)
     {
@@ -22,7 +21,7 @@ class XSLTView extends View
     public function process()
     {
         $xpath = new DOMXPath($this->view);
-        foreach ($this->data as $key => $item)
+        foreach ($this->data as $key=>$item)
         {
             $nodes = $xpath->query("//*[@uvcms:databind='$key']");
             for ($i = 0; $i < $nodes->length; $i++)
@@ -32,7 +31,7 @@ class XSLTView extends View
                 $nodes->item($i)->parentNode->removeChild($nodes->item($i));
                 $this->processItem($node, $item);
             }
-		}
+        }
     }
     public function processItem($node, $item)
     {
@@ -83,7 +82,7 @@ class XSLTView extends View
         } else
         {
             $proc = new XSLTProcessor();
-            $proc->importStylesheet($this->stylesheet);			
+            $proc->importStylesheet($this->stylesheet);
             echo $proc->transformToXML($this->view);
             exit ();
         }
