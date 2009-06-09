@@ -1,12 +1,12 @@
 <?php
 require_once '../lib/View.class.php';
 class XSLTView extends View
-{
-	private $viewObj;
+{	
     private $stylesheet;    
     public function __construct($stylesheet, $view)
     {
-        parent::__construct($view);
+    	parent::__construct();        
+        $this->setView($view);
         $this->setStylesheet($stylesheet);        
     }
     private function setStylesheet($path)
