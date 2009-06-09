@@ -1,11 +1,12 @@
 <?php
-require_once '../lib/View.interface.php';
+require_once '../lib/View.class.php';
 class XSLTView extends View
 {
+	private $viewObj;
     private $stylesheet;    
     public function __construct($stylesheet, $view)
     {
-        parent::__construct();
+        parent::__construct($view);
         $this->setStylesheet($stylesheet);        
     }
     private function setStylesheet($path)
@@ -20,7 +21,9 @@ class XSLTView extends View
     }
     public function process()
     {
-        $xpath = new DOMXPath($this->view);
+    	$this->viewObj = new DOMDocument();
+    	$this->viewObj->load($this->view);
+        $xpath = new DOMXPath($this->viewObj);
         foreach ($this->data as $key=>$item)
         {
             $nodes = $xpath->query("//*[@uvcms:databind='$key']");
@@ -83,7 +86,7 @@ class XSLTView extends View
         {
             $proc = new XSLTProcessor();
             $proc->importStylesheet($this->stylesheet);
-            echo $proc->transformToXML($this->view);
+            echo $proc->transformToXML($this->viewObj);
             exit ();
         }
     }
