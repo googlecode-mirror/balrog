@@ -1,7 +1,7 @@
 <?php
 class View implements Config{
 	protected $view;
-	private $data;
+	protected $data;
 	public function __construct($view = NULL){
 		$this->data = array ();
 		$this->setView($view);
