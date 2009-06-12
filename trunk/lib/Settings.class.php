@@ -1,6 +1,6 @@
 <?php
 class Settings {	
-	public static function get($query){					
+	public static function get($query){		
 		$xml = new DOMDocument();
 		$xml->load(CONFILE);		
 		$xpath = new DOMXPath($xml);
