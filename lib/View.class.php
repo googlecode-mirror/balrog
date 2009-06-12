@@ -1,29 +1,25 @@
 <?php
 class View{
-	protected $view;
+	protected $filename;
+	protected $output;
 	protected $data;
-	public function __construct($view = NULL){
-		$this->data = array ();
-		$this->setView($view);
+	public function __construct($filename){
+		$this->filename = $filename;
 	}
-	private function setView($path)
-	{
-		$this->view = $path;
-	}
-	public function setData($key, $value)
-	{
-		$this->data[$key] = $value;
+	public function fill($dump){
+		
+		$this->data = is_array($dump) ? $dump : array();
 	}
 	public function process(){
 		extract($this->data);
 		ob_start();
-		if(!empty($this->view)){
-			include $this->view;
+		if(!empty($this->filename)){
+			include $this->filename;
 		}
-		$this->view = ob_get_clean();
+		$this->output = ob_get_clean();
 		ob_end_clean();
 	}
 	public function render(){
-		echo $this->view;
+		echo $this->output;
 	}
 }
