@@ -5,7 +5,7 @@ class Home extends XSLTController
 {
     public function index()
     {        
-        $this->_setView('xsl/html/template.xsl', 'xml/index.xml');        
+        $this->_setView('xml/index.xml', 'xsl/html/template.xsl');
     }
     public function process()
     {
