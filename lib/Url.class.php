@@ -1,5 +1,5 @@
 <?php
-class Url implements Config
+class Url
 {
     public static function get_param($name)
     {
