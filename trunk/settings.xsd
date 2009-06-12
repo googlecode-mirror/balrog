@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.example.org/settings" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org/settings">
+
+    <xsd:element name="settings" type="Settings"></xsd:element>
+    
+    <xsd:complexType name="Settings">
+    	<xsd:sequence>
+    		<xsd:element name="wwwroot" type="xsd:string" maxOccurs="1" minOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="dirroot" type="xsd:string" maxOccurs="1" minOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="clientmode" type="xsd:boolean" maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="database" type="Database" maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="defaults" type="Defaults" maxOccurs="1" minOccurs="1">
+    		</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Database">
+    	<xsd:sequence>
+            <xsd:element name="host" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="name" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="user" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="pass" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Defaults">
+    	<xsd:sequence>
+    		<xsd:element name="controller" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="action" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
