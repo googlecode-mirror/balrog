@@ -1,5 +1,5 @@
 <?php
-class View implements Config{
+class View{
 	protected $view;
 	protected $data;
 	public function __construct($view = NULL){

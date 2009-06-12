@@ -1,6 +1,6 @@
 <?php
 require_once '../lib/Model.class.php';
-abstract class MySQLiModel extends Model implements Config
+abstract class MySQLiModel extends Model
 {
 	protected $conn;
 	public function __construct()

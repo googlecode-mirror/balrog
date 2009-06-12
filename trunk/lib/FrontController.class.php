@@ -1,4 +1,5 @@
 <?php
+require_once '../lib/Settings.class.php';
 class FrontController
 {
     private $controller;
@@ -6,8 +7,8 @@ class FrontController
     private $instance;
     public function __construct($controller, $action)
     {
-        $this->controller = $controller?$controller:'home';
-        $this->action = $action?$action:'index';
+        $this->controller = $controller ? $controller : Settings::get('defaults/controller');
+        $this->action = $action ? $action : Settings::get('defaults/action');
     }
     public function excecute()
     {

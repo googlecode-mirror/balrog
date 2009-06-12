@@ -1,7 +1,7 @@
 <?php
 require_once '../lib/View.class.php';
 require_once '../lib/Path.class.php';
-abstract class Controller implements Config
+abstract class Controller
 {
     protected  $view;
     protected function _setView($view)
