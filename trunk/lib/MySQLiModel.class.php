@@ -8,7 +8,7 @@ abstract class MySQLiModel extends Model
 		$this->conn = self::getConnection();
 	}
 	protected static function getConnection(){
-		return new mysqli(self::DBHOST, self::DBUSER, self::DBPASS, self::DBNAME);
+		return new mysqli(Settings::get('blrg:database/blrg:host'), Settings::get('blrg:database/blrg:user'), Settings::get('blrg:database/blrg:pass'), Settings::get('blrg:database/blrg:name'));
 	}
 	protected function query($sql)
 	{

@@ -3,11 +3,14 @@
     <xsd:element name="settings" type="blrg:Settings"></xsd:element>
     <xsd:complexType name="Settings">
     	<xsd:sequence>
-    		<xsd:element name="wwwroot" type="xsd:string" maxOccurs="1" minOccurs="1">
+    		<xsd:element name="wwwroot" type="xsd:string" maxOccurs="1"
+    			minOccurs="1">
     		</xsd:element>
-    		<xsd:element name="dirroot" type="xsd:string" maxOccurs="1" minOccurs="1">
+    		<xsd:element name="dirroot" type="xsd:string" maxOccurs="1"
+    			minOccurs="1">
     		</xsd:element>
-    		<xsd:element name="clientmode" type="xsd:boolean" maxOccurs="1" minOccurs="0">
+    		<xsd:element name="clientmode" type="xsd:boolean"
+    			maxOccurs="1" minOccurs="0">
     		</xsd:element>
     		<xsd:element name="database" type="blrg:Database"
     			maxOccurs="1" minOccurs="0">
@@ -15,9 +18,7 @@
     		<xsd:element name="defaults" type="blrg:Defaults"
     			maxOccurs="1" minOccurs="1">
     		</xsd:element>
-    		<xsd:element name="application" type="blrg:Application"
-    			maxOccurs="1" minOccurs="0">
-    		</xsd:element>
+    		<xsd:element name="facebook" type="blrg:Facebook" maxOccurs="1" minOccurs="0"></xsd:element>
     	</xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="Database">
@@ -34,8 +35,11 @@
     		<xsd:element name="action" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
     	</xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="Application">
+
+    <xsd:complexType name="Facebook">
     	<xsd:sequence>
-    		<xsd:any></xsd:any>
-    	</xsd:sequence></xsd:complexType>
+    		<xsd:element name="apikey" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="secret" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
 </xsd:schema>
