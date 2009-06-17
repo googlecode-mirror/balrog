@@ -7,7 +7,7 @@ abstract class FacebookController extends SocialController
     public function __construct()
     {
         parent::__construct();
-        $this->facebook = new Facebook(self::APIKEY, self::SECRET);
+        $this->facebook = new Facebook(Settings::get('blrg:facebook/blrg:apikey'), Settings::get('blrg:facebook/blrg:secret'));
         $this->facebook->require_frame();
         $this->uid = $this->facebook->require_login();
     }
