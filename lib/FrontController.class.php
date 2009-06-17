@@ -7,8 +7,8 @@ class FrontController
 	private $instance;
 	public function __construct($controller, $action)
 	{
-		$this->controller = $controller ? $controller : Settings::get('defaults/controller');
-		$this->action = $action ? $action : Settings::get('defaults/action');
+		$this->controller = $controller ? $controller : Settings::get('blrg:defaults/blrg:controller');
+		$this->action = $action ? $action : Settings::get('blrg:defaults/blrg:action');
 	}
 	public function excecute()
 	{
