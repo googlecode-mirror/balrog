@@ -1,15 +1,18 @@
 <?php
 require_once '../lib/XSLTController.class.php';
-require_once 'models/Comment.php';
+require_once '../lib/ViewFactory.class.php';
 class Home extends XSLTController
 {
 	public function index()
 	{
-		$this->_setView('xml/index.xml', 'xsl/html/template.xsl');
+		$view = ViewFactory::factory('php/template.php');
+		$view->assign('title', 'TEST');
+		$view->assign('content', $this->inicio());
+		return $view;
 	}
-	public function process()
-	{
-		print_r($_POST);
-		$this->index();
+	public function inicio(){
+		$view = ViewFactory::factory('php/test.php');
+		$view->assign('title', 'Ferrari');
+		return $view;
 	}
 }

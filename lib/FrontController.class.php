@@ -2,20 +2,42 @@
 require_once '../lib/Settings.class.php';
 class FrontController
 {
-	private $controller;
-	private $action;
-	private $instance;
-	public function __construct($controller, $action)
-	{
-		$this->controller = $controller ? $controller : Settings::get('blrg:defaults/blrg:controller');
-		$this->action = $action ? $action : Settings::get('blrg:defaults/blrg:action');
-	}
-	public function excecute()
-	{
-		require_once 'controllers/'.ucfirst($this->controller).'.php';
-		$action = $this->action;
-		$this->instance = new $this->controller();
-		$this->instance->$action();
-		$this->instance->_release();
-	}
+    private $controller;
+    private $action;
+    static $instance;
+    public function __construct()
+    {
+        $this->controller = ! empty($_REQUEST['c'])?$_REQUEST['c']:Settings::get('blrg:defaults/blrg:controller');
+        $this->action = ! empty($_REQUEST['a'])?$_REQUEST['a']:Settings::get('blrg:defaults/blrg:action');
+        require_once 'controllers/'.ucfirst($this->controller).'.php';
+    }
+    public function getController()
+    {
+        return $this->controller;
+    }
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    private static function getInstance()
+    {
+        if (!(self::$instance instanceof self))
+        {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+    public static function go()
+    {
+        $instance = self::getInstance();
+        $controller = $instance->getController();
+        $controller = new $controller();
+        $action = $instance->getAction();
+        $view = $controller->$action();
+        if ($view instanceof IView)
+        {
+            print $view;
+        }
+    }
 }
