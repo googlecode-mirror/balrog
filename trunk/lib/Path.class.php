@@ -2,7 +2,7 @@
 require_once '../lib/Settings.class.php';
 class Path
 {
-    public static function get_path($filename)
+    public static function get($filename)
     {
         return sprintf('%1$s%2$sviews%2$s%3$s', Settings::get('blrg:dirroot'), DIRECTORY_SEPARATOR, $filename);
     }

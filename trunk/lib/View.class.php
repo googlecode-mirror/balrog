@@ -1,25 +1,29 @@
 <?php
-class View{
+require_once 'View.interface.php';
+class View implements IView{
 	protected $filename;
 	protected $output;
 	protected $data;
 	public function __construct($filename){
 		$this->filename = $filename;
+		$this->data = array();
 	}
-	public function fill($dump){
-		
-		$this->data = is_array($dump) ? $dump : array();
+	public function assign($label, $value){
+		$this->data[$label] = $value;
 	}
-	public function process(){
+	private function process(){
 		extract($this->data);
 		ob_start();
 		if(!empty($this->filename)){
 			include $this->filename;
 		}
-		$this->output = ob_get_clean();
-		ob_end_clean();
+		$this->output = ob_get_clean();				
 	}
-	public function render(){
-		echo $this->output;
+	public function show(){
+		$this->process();
+		return $this->output;
 	}
+	public function __toString(){
+		return $this->show();
+	}	
 }
