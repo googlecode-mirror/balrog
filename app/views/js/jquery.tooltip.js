@@ -2,7 +2,7 @@
  * Este plugin para javascript muestra tooltips agregados al HTML con un formato adecuado.
  *
  * @author terremoto
- * @todo Agregar opciones para que el plugin pueda utilizar diferentes métodos para cargar
+ * @todo Agregar opciones para que el plugin pueda utilizar diferentes metodos para cargar
  * el contenido de los tooltips.
  */
 /**
@@ -58,7 +58,7 @@ jQuery.tooltip = {
 	}
 };
 /**
- * Nuevos métodos para el objeto jQuery.
+ * Nuevos metodos para el objeto jQuery.
  *
  * Se ejecutan inmediatamente para evitar el acceso a la variable newMethods desde otros plugins.
  */
@@ -67,7 +67,7 @@ jQuery.tooltip = {
 		'tooltip': function() {
 			return this.each(function(i, elem) {
 				$(elem).click(function() {
-					return false; // Impedimos la ejecución del click para evitar que posicione la pantalla en el anchor oculto.
+					return false; // Impedimos la ejecucion del click para evitar que posicione la pantalla en el anchor oculto.
 				}).mousemove($.tooltip.alocate).hover($.tooltip.show, $.tooltip.hide);
 			});
 		}
