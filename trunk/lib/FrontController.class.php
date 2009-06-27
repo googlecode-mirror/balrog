@@ -34,10 +34,6 @@ class FrontController
         $controller = $instance->getController();
         $controller = new $controller();
         $action = $instance->getAction();
-        $view = $controller->$action();
-        if ($view instanceof IView)
-        {
-            print $view;
-        }
+        echo $controller->$action();
     }
 }
