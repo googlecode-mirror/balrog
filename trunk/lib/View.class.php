@@ -11,7 +11,7 @@ class View implements IView{
 	public function assign($label, $value){
 		$this->data[$label] = $value;
 	}
-	private function process(){
+	protected function process(){
 		extract($this->data);
 		ob_start();
 		if(!empty($this->filename)){
