@@ -1,7 +1,7 @@
 <?php
-require_once '../lib/XSLTController.class.php';
+require_once '../lib/Controller.class.php';
 require_once '../lib/ViewFactory.class.php';
-class Home extends XSLTController
+class Home extends Controller
 {
 	public function index()
 	{
@@ -17,6 +17,6 @@ class Home extends XSLTController
 		return $view;
 	}
 	public function form(){
-		return ViewFactory::factory('xml/index.xml','xsl/html/template.xsl');
+		return ViewFactory::factory('xml/index.xml');
 	}
 }

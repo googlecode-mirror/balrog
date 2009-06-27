@@ -10,13 +10,4 @@ abstract class Controller
     {
         return isset ($_REQUEST[$name])?$_REQUEST[$name]:NULL;
     }
-    public function _release()
-    {
-        if ( isset ($this->view))
-        {
-            $this->view->fill($this->data);
-            $this->view->process();
-            $this->view->render();
-        }
-    }
 }
