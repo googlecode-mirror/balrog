@@ -5,6 +5,7 @@
 		<title><?php print $title; ?></title>
 	</head>
 	<body>
+		<?php print $message; ?>
 		<?php print $content; ?>
 	</body>
 </html>
