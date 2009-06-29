@@ -17,6 +17,9 @@ class Home extends Controller
 		return $view;
 	}
 	public function form(){
-		return ViewFactory::factory('xml/index.xml');
+		$xml = ViewFactory::factory('xml/index.xml');
+		$xsl = ViewFactory::factory('xsl/html/template.xsl');
+		$xsl->assign($xml);
+		return $xsl;
 	}
 }
