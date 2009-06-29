@@ -15,10 +15,4 @@ class ViewXML extends View{
 	public function show(){
 		return $this->domdoc->saveXML();
 	}
-	public function transform($stylesheet)
-	{
-		$proc = new XSLTProcessor();
-		$proc->importStylesheet($stylesheet);
-		return $proc->transformToXML($this->domdoc);
-	}
 }
