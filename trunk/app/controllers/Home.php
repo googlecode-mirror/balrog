@@ -8,15 +8,10 @@ class Home extends Controller
 		$view = ViewFactory::factory('php/template.php');
 		$view->assign('title', 'TEST');
 		$view->assign('message', ViewFactory::factory('html/welcome.html'));
-		$view->assign('content', $this->inicio());
+		$view->assign('content', 'Un texto');
 		return $view;
 	}
 	public function inicio(){
-		$view = ViewFactory::factory('php/test.php');
-		$view->assign('title', 'Ferrari');
-		return $view;
-	}
-	public function form(){
 		$xml = ViewFactory::factory('xml/index.xml');
 		$xsl = ViewFactory::factory('xsl/html/template.xsl');
 		$xsl->assign($xml);
