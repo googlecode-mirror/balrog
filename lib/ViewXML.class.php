@@ -15,4 +15,8 @@ class ViewXML extends View{
 	public function show(){
 		return $this->domdoc->saveXML();
 	}
+	public function __toString(){
+		header('Content-type: text/xml');
+		parent::show();
+	}
 }

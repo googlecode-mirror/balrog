@@ -5,7 +5,7 @@ abstract class View{
 		$this->filename = $filename;
 	}
 	abstract public function show();
-	public function __toString(){
+	protected function __toString(){
 		return $this->show();
 	}
 }

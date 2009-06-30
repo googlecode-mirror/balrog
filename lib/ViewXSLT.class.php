@@ -27,7 +27,4 @@ class ViewXSLT extends View
 	public function show(){
 		return $this->processor->transformToXML($this->xmldoc);
 	}
-	public function __toString(){
-		return $this->show();
-	}
 }
