@@ -6,4 +6,5 @@ abstract class Model
 	public function __construct(){
 		$this->conn = Connection::getInstance();
 	}
+	abstract function map($obj);
 }
