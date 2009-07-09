@@ -13,6 +13,7 @@ class ViewXML extends View{
 		$this->domdoc->load($this->filename);		
 	}
 	public function show(){
+		header('Content-type: text/xml');
 		return $this->domdoc->saveXML();
 	}
 	public function __toString(){
