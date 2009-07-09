@@ -9,7 +9,6 @@ class FrontController
     {
         $this->controller = ! empty($_REQUEST['c'])?$_REQUEST['c']:Settings::get('blrg:defaults/blrg:controller');
         $this->action = ! empty($_REQUEST['a'])?$_REQUEST['a']:Settings::get('blrg:defaults/blrg:action');
-        require_once 'controllers/'.ucfirst($this->controller).'.php';
     }
     public function getController()
     {
@@ -28,12 +27,21 @@ class FrontController
         }
         return self::$instance;
     }
+    public static function autoload($controller)
+    {
+        require_once 'controllers/'.ucfirst($controller).'.php';
+    }
     public static function go()
     {
         $instance = self::getInstance();
         $controller = $instance->getController();
-        $controller = new $controller();
         $action = $instance->getAction();
-        echo $controller->$action();
+        echo self::invoke($controller, $action);
+    }
+    public static function invoke($controller, $action)
+    {
+    	self::autoload($controller);
+        $controller = new $controller();
+        return $controller->$action();
     }
 }
