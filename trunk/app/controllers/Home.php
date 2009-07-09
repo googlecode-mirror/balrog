@@ -1,14 +1,13 @@
 <?php
-require_once '../lib/Controller.class.php';
+require_once '../lib/Controller.interface.php';
 require_once '../lib/ViewFactory.class.php';
-class Home extends Controller
+class Home implements IController
 {
 	public function index()
 	{
 		$view = ViewFactory::factory('php/template.php');
 		$view->assign('title', 'TEST');
-		$view->assign('message', ViewFactory::factory('html/welcome.html'));
-		$view->assign('content', 'Un texto');
+		$view->assign('message', 'HOLA');
 		return $view;
 	}
 	public function inicio(){
