@@ -10,10 +10,9 @@ class ViewXML extends View{
 	public function __construct($filename){
 		parent::__construct($filename);
 		$this->domdoc = new DOMDocument();
-		$this->domdoc->load($this->filename);		
+		$this->domdoc->load($this->filename);
 	}
 	public function show(){
-		header('Content-type: text/xml');
 		return $this->domdoc->saveXML();
 	}
 	public function __toString(){
