@@ -18,16 +18,4 @@ abstract class Model implements Iterator
 	public function next(){
 		return $this->map($this->result->fetch_object());
 	}
-	public function current(){
-		
-	}
-	public function key(){
-
-	}
-	public function valid (){
-
-	}
-	public function rewind(){
-
-	}
 }
