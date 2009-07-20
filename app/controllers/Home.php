@@ -7,7 +7,7 @@ class Home implements IController
 	{
 		$view = Views::factory('php/template.php');
 		$view->assign('title', 'TEST');
-		$view->assign('message', 'Any message...');
+		$view->assign('message', 'My message...');
 		return $view;
 	}
 	public function inicio(){		
