@@ -1,21 +1,15 @@
 <?php
 require_once '../lib/Connection.class.php';
-abstract class Model implements Iterator
+abstract class Model
 {
-	protected $conn;
 	private $result;
 	public function __construct(){
-		$this->conn = Connection::getInstance();
 		$this->result = NULL;
 	}
-	abstract function map($obj);
 	public function query($sql){
-		$this->result = $this->conn->query($sql);
-		if($this->result){
-			$this->next();
-		}
+		$this->result = Connection::getInstance()->query($sql);
 	}
 	public function next(){
-		return $this->map($this->result->fetch_object());
+		return $this->result->fetch(PDO::FETCH_INTO, $this);
 	}
 }
