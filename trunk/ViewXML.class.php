@@ -1,5 +1,5 @@
 <?php
-require_once '../lib/View.class.php';
+require_once 'lib/View.class.php';
 class ViewXML extends View{
 	protected $domdoc;
 	/**
