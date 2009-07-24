@@ -1,22 +1,21 @@
 <?php 
 class Connection {
-	private $host;
-	private $name;
-	private $user;
-	private $pass;
-	private static $instance = NULL;
+    private $host;
+    private $name;
+    private $user;
+    private $pass;
+    private static $instance = NULL;
     /**
-     * The constructor is set to private so
-     * so nobody can create a new instance using new
+     * The constructor is set to private so nobody can create a new instance of the class
      */
     private function __construct() {
-    	$this->host = Settings::get('blrg:database/blrg:host');
-		$this->name = Settings::get('blrg:database/blrg:name');
-		$this->user = Settings::get('blrg:database/blrg:user');
-		$this->pass = Settings::get('blrg:database/blrg:pass');		
-    }   
+        $this->host = Settings::get('blrg:database/blrg:host');
+        $this->name = Settings::get('blrg:database/blrg:name');
+        $this->user = Settings::get('blrg:database/blrg:user');
+        $this->pass = Settings::get('blrg:database/blrg:pass');
+    }
     /**
-     * Return DB instance or create intitial connection
+     * Singleton method that requests a unique instance of the class
      *
      * @return object (PDO)
      * @access public
@@ -29,10 +28,7 @@ class Connection {
         return self::$instance;
     }
     /**
-     *
-     * Like the constructor, we make __clone private
-     * so nobody can clone the instance
-     *
+     * This magic method is set as private so nobody can clone the instance
      */
-    private function __clone() {}    
+    private function __clone() {}
 }
