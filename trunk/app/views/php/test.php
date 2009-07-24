@@ -1,1 +1,0 @@
-<p>Te cambio por una <?php print $title; ?></p>
