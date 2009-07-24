@@ -1,5 +1,5 @@
 <?php
-require_once '../lib/Settings.class.php';
+require_once 'lib/Settings.class.php';
 class Path
 {
     public static function get($filename)

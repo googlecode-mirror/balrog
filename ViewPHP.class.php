@@ -1,5 +1,5 @@
 <?php
-require_once '../lib/View.class.php';
+require_once 'lib/View.class.php';
 class ViewPHP extends View {
 	private $data;
 	public function __construct($filename){

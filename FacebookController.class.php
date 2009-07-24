@@ -1,6 +1,6 @@
 <?php
-require_once '../php/facebook.php';
-require_once '../lib/SocialController.class.php';
+require_once 'php/facebook.php';
+require_once 'lib/SocialController.class.php';
 abstract class FacebookController extends SocialController
 {
     private $facebook;    

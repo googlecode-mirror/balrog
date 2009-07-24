@@ -1,5 +1,5 @@
 <?php
-require_once '../lib/Connection.class.php';
+require_once 'lib/Connection.class.php';
 abstract class Model
 {
 	private $result;

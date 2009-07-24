@@ -1,6 +1,6 @@
 <?php
-require_once 'Settings.class.php';
-require_once '../lib/View.class.php';
+require_once 'lib/Settings.class.php';
+require_once 'lib/View.class.php';
 class ViewXSLT extends View
 {
 	private $xmldoc;
