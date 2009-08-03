@@ -12,9 +12,11 @@ class Path
     		case self::VIEW:
 				$relpath = 'views';
 				break;
+    		case self::CONTROLLER:
+    			$relpath = 'controllers';
+    			break;
 			default:
 				$relpath = 'files';
-				break;
     	}
         return sprintf('%1$s%2$s%3$s%2$s%4$s', Settings::get('blrg:dirroot'), DIRECTORY_SEPARATOR, $relpath, $filename);
     }
