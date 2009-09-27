@@ -1,2 +1,3 @@
-<?php
-interface IController {}
+<?php 
+interface IController {
+}

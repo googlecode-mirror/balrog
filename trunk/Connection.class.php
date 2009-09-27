@@ -30,5 +30,6 @@ class Connection {
     /**
      * This magic method is set as private so nobody can clone the instance
      */
-    private function __clone() {}
+    private function __clone() {
+    }
 }
