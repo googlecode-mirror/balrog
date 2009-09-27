@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/View.class.php';
+require_once '../core/View.class.php';
 class ViewXML extends View{
 	protected $domdoc;
 	/**
@@ -17,6 +17,6 @@ class ViewXML extends View{
 	}
 	public function __toString(){
 		header('Content-type: text/xml');
-		parent::show();
+		return $this->show();
 	}
 }

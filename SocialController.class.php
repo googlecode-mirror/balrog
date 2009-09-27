@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/Controller.class.php';
+require_once '../core/Controller.class.php';
 abstract class SocialController extends Controller
 {
     protected $uid;
