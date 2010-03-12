@@ -1,5 +1,5 @@
 <?php
-require_once '../core/Connection.class.php';
+require_once './core/Connection.class.php';
 abstract class Model
 {
 	private $result;
@@ -25,7 +25,8 @@ abstract class Model
 	 * 
 	 * @return 
 	 */
-	public function next(){
-		return $this->result->fetch(PDO::FETCH_INTO, $this);
+	public function fetch(){
+		$this->result->setFetchMode(PDO::FETCH_INTO, $this);
+		return $this->result->fetch(PDO::FETCH_INTO);
 	}
 }
