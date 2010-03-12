@@ -29,4 +29,22 @@ abstract class Model
 		$this->result->setFetchMode(PDO::FETCH_INTO, $this);
 		return $this->result->fetch(PDO::FETCH_INTO);
 	}
+	/**
+	 * Default getter
+	 * 
+	 * @param string $key
+	 */
+	public function __get($key){
+		$method = 'get'.ucfirst($key);
+		return $this->$method();
+	}
+	/**
+	 * Default setter
+	 * 
+	 * @param string $key
+	 */
+	public function __set($key, $value){
+		$method = 'set'.ucfirst($key);
+		return $this->$method($value);
+	}
 }
