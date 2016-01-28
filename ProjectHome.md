@@ -1,0 +1,1 @@
+Balrog project is a simple MVC library aimed to empower small PHP applications making development faster and easier. This library implements PDO for the data access layer.
